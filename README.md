@@ -25,249 +25,251 @@ About SMSlib SMSServer :
 Installing Java SMSlib and SMSServer in Linux : 
 -----------------------------------------------
 
-       I choosed Debian and Ubuntu distributions of linux . 
+I choosed Debian and Ubuntu distributions of linux . 
         
       
-          1) Create the smslib_source directory in /usr/src . 
+1) Create the smslib_source directory in /usr/src . 
 
-          2) download the jdk-6u20-linux-i586.bin from http://java.sun.com/javase/downloads/widget/jdk6.jsp 
+2) download the jdk-6u20-linux-i586.bin from http://java.sun.com/javase/downloads/widget/jdk6.jsp 
 
-          3) run the jdk-6u20-linux-i586.bin file in your console by typing 
+3) run the jdk-6u20-linux-i586.bin file in your console by typing 
          	
-               sts:/usr/src#>./jdk-6u20-linux-i586.bin        
+       sts:/usr/src#>./jdk-6u20-linux-i586.bin        
 
-	      Now we have installed lattest java version .
+     Now we have installed lattest java version .
 
-          4) without installing jdk , there may be a chance of Java is avaliable in our Linux operating system . 
-	     It may not be up to date . So we have to set the path variable for current jdk bin directory . 
+4) without installing jdk , there may be a chance of Java is avaliable in our Linux operating system . 
+    It may not be up to date . So we have to set the path variable for current jdk bin directory . 
 
-	     Add below line into your .bashrc file . 
+    Add below line into your .bashrc file . 
 
-             export PATH="/usr/src/jdk1.6.0_20/bin:$PATH"
+    export PATH="/usr/src/jdk1.6.0_20/bin:$PATH"
 
-          5) run the .bashrc file by typing in your console #>./.bashrc 
+5) run the .bashrc file by typing in your console #>./.bashrc 
 
-          6) Check the java version by typing 
-            
-                sts:~# echo $PATH
-		/usr/src/jdk1.6.0_20/bin:/usr/src/jdk1.6.0_20/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-		sts:~# java -version
-		java version "1.6.0_20"
-		Java(TM) SE Runtime Environment (build 1.6.0_20-b02)
-		Java HotSpot(TM) Client VM (build 16.3-b01, mixed mode)
+6) Check the java version by typing 
+   
+       sts:~# echo $PATH
+       /usr/src/jdk1.6.0_20/bin:/usr/src/jdk1.6.0_20/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+       sts:~# java -version
+       java version "1.6.0_20"
+       Java(TM) SE Runtime Environment (build 1.6.0_20-b02)
+       Java HotSpot(TM) Client VM (build 16.3-b01, mixed mode)
 
-               Right now we installed current version of  jdk . 
+      Right now we installed current version of  jdk . 
 
-              Note : 
-                  by the time I used jdk 1.6.0_20 version . Please replace with current jdk for best results .
-
-
-	  7) Mysql installation and creating database for smslib .
-
-		  -> Install mysql using aptiude command .
-			
-                   sts:~#aptitude install mysql-server
-		   
-		  -> loging as mysql administrator . And create the smslib named database and user with password 'smslib' .
-
-		  sts:~#mysql -u root -p
-
-	          mysql> create database smslib ;
-                  Query OK, 0 rows affected (0.01 sec)
-		  mysql> grant all on smslib.* to smslib@localhost identified by 'smslib' ;
-		  Query OK, 0 rows affected (0.02 sec)
+     Note : 
+         by the time I used jdk 1.6.0_20 version . Please replace with current jdk for best results .
 
 
+7) Mysql installation and creating database for smslib .
 
-	 8) Now download the current smslib from http://smslib.org/download/files/smslib-v3.4.6.zip 
-            and unzip it in /usr/src/smslib_sources/smslib directory . 
+         -> Install mysql using aptiude command .
+       	
+          sts:~#aptitude install mysql-server
+          
+         -> loging as mysql administrator . And create the smslib named database and user with password 'smslib' .
 
-               we have to install followings dependencies to make smslib work  .
-              
-                  -> Java Communications Library Installation :
-		    
-		          This library is used to interact with serial devices such as modem,mobile ..etc . Along with rxtx jar; we have to install the two .so files well . 
-                          It is better for us to install it from synaptic,apt-get or aptitute with go for downloading rxtx library and compiling it .
-			  
-			  sts:/usr/src# aptitude install librxtx-java
+         sts:~#mysql -u root -p
 
-			  it would install .so files in /usr/lib directory .
-			  
-			   sts:/usr/lib# ls -lrt librxtx*
-			   -rw-r--r-- 1 root root   875 2008-07-21 22:44 librxtxSerial.la
-			   -rw-r--r-- 1 root root 49072 2008-07-21 22:44 librxtxSerial-2.1-7.so
-			   -rw-r--r-- 1 root root   869 2008-07-21 22:44 librxtxRS485.la
-			   -rw-r--r-- 1 root root 17932 2008-07-21 22:44 librxtxRS485-2.1-7.so
-			   -rw-r--r-- 1 root root   857 2008-07-21 22:44 librxtxRaw.la
-			   -rw-r--r-- 1 root root 17248 2008-07-21 22:44 librxtxRaw-2.1-7.so
-			   -rw-r--r-- 1 root root   887 2008-07-21 22:44 librxtxParallel.la
-			   -rw-r--r-- 1 root root 10012 2008-07-21 22:44 librxtxParallel-2.1-7.so
-			   -rw-r--r-- 1 root root   857 2008-07-21 22:44 librxtxI2C.la
-			   -rw-r--r-- 1 root root 17164 2008-07-21 22:44 librxtxI2C-2.1-7.so
-			   lrwxrwxrwx 1 root root    22 2010-05-15 17:44 librxtxSerial.so -> librxtxSerial-2.1-7.so
-			   lrwxrwxrwx 1 root root    21 2010-05-15 17:44 librxtxRS485.so -> librxtxRS485-2.1-7.so
-			   lrwxrwxrwx 1 root root    19 2010-05-15 17:44 librxtxRaw.so -> librxtxRaw-2.1-7.so
-			   lrwxrwxrwx 1 root root    24 2010-05-15 17:44 librxtxParallel.so -> librxtxParallel-2.1-7.so
-			   lrwxrwxrwx 1 root root    19 2010-05-15 17:44 librxtxI2C.so -> librxtxI2C-2.1-7.so
-
-		  java native c libraries are installed succfully in /usr/lib directort . Next thing is we have to findout RXTXcomm.jar . By default it would installed 
-		  in  /usr/share/java directory .
-
-		   -->  Now copy RXTXcomm.jar file into /usr/src/jdk1.6.0_20/jre/lib/ext .
-			
-	         That's it . we have successfully installed RXTX java communication library on Debian or Ubuntu OS .
+         mysql> create database smslib ;
+         Query OK, 0 rows affected (0.01 sec)
+         mysql> grant all on smslib.* to smslib@localhost identified by 'smslib' ;
+         Query OK, 0 rows affected (0.02 sec)
 
 
-		Note :
-		       if you are unable to findout /usr/share/java or/and /usr/lib/jvm . Then you may want to install default java package from 
-                       OS repository .
 
-		       we need to install default java; then only we can get precompiled librxtx-java library . Just we are cheating here .  After installing 
-                       this default-java be ensure that you are not set PATH variable value to this java binary . 
+8) Now download the current smslib from http://smslib.org/download/files/smslib-v3.4.6.zip 
+   and unzip it in /usr/src/smslib_sources/smslib directory . 
 
-                       After installation please check java version well . Because this java version not compatible with current smslib .
+      we have to install followings dependencies to make smslib work  .
+     
+      Java Communications Library Installation :
+      -----------------------------------------
+           
+        This library is used to interact with serial devices such as modem,mobile ..etc . Along with rxtx jar; we have to install the two .so files well . 
+        It is better for us to install it from synaptic,apt-get or aptitute with go for downloading rxtx library and compiling it .
+       	  
+       	  sts:/usr/src# aptitude install librxtx-java
+
+       	  it would install .so files in /usr/lib directory .
+       	  
+       	   sts:/usr/lib# ls -lrt librxtx*
+       	   -rw-r--r-- 1 root root   875 2008-07-21 22:44 librxtxSerial.la
+       	   -rw-r--r-- 1 root root 49072 2008-07-21 22:44 librxtxSerial-2.1-7.so
+       	   -rw-r--r-- 1 root root   869 2008-07-21 22:44 librxtxRS485.la
+       	   -rw-r--r-- 1 root root 17932 2008-07-21 22:44 librxtxRS485-2.1-7.so
+       	   -rw-r--r-- 1 root root   857 2008-07-21 22:44 librxtxRaw.la
+       	   -rw-r--r-- 1 root root 17248 2008-07-21 22:44 librxtxRaw-2.1-7.so
+       	   -rw-r--r-- 1 root root   887 2008-07-21 22:44 librxtxParallel.la
+       	   -rw-r--r-- 1 root root 10012 2008-07-21 22:44 librxtxParallel-2.1-7.so
+       	   -rw-r--r-- 1 root root   857 2008-07-21 22:44 librxtxI2C.la
+       	   -rw-r--r-- 1 root root 17164 2008-07-21 22:44 librxtxI2C-2.1-7.so
+       	   lrwxrwxrwx 1 root root    22 2010-05-15 17:44 librxtxSerial.so -> librxtxSerial-2.1-7.so
+       	   lrwxrwxrwx 1 root root    21 2010-05-15 17:44 librxtxRS485.so -> librxtxRS485-2.1-7.so
+       	   lrwxrwxrwx 1 root root    19 2010-05-15 17:44 librxtxRaw.so -> librxtxRaw-2.1-7.so
+       	   lrwxrwxrwx 1 root root    24 2010-05-15 17:44 librxtxParallel.so -> librxtxParallel-2.1-7.so
+       	   lrwxrwxrwx 1 root root    19 2010-05-15 17:44 librxtxI2C.so -> librxtxI2C-2.1-7.so
+
+         java native c libraries are installed succfully in /usr/lib directort . Next thing is we have to findout RXTXcomm.jar . By default it would installed 
+         in  /usr/share/java directory .
+
+          -->  Now copy RXTXcomm.jar file into /usr/src/jdk1.6.0_20/jre/lib/ext .
+       	
+        That's it . we have successfully installed RXTX java communication library on Debian or Ubuntu OS .
 
 
-                  -> Apache ant installation :
-                        
-                      --> Download latest Apache Ant from http://ant.apache.org/bindownload.cgi 
-                      --> Decompress it and save it in smslib_source directory .
-                      --> Now append bin location  into PATH variable .  Edit .bashrc file again and relplace export path variable with below .
+       Note :
+              if you are unable to findout /usr/share/java or/and /usr/lib/jvm . Then you may want to install default java package from 
+              OS repository .
 
-                          export PATH="/usr/src/jdk1.6.0_20/bin:/usr/src/smslib_source/apache-ant-1.8.1/bin:$PATH"
+              we need to install default java; then only we can get precompiled librxtx-java library . Just we are cheating here .  After installing 
+              this default-java be ensure that you are not set PATH variable value to this java binary . 
 
-		      --> check ant command version after running 
-                          sts:/usr/src/smslib_source/apache-ant-1.8.1/bin# ~/.bashrc
-                          sts:/usr/src/smslib_source/rxtx-2.1-7-bins-r2/Linux/i686-unknown-linux-gnu# ant -version
-   	 		  Apache Ant version 1.8.1 compiled on April 30 2010
+              After installation please check java version well . Because this java version not compatible with current smslib .
 
-		 -> Apache log4j library installation :
-                          
-		      --> Download lattest appache log4j from http://logging.apache.org/log4j/1.2/download.html and save it in smslib_source
-                          directory .
-                      --> Uncompress it dpending upon your source extension .
-                      --> copy log4j jar file into /usr/src/jdk<version>/jre/lib/ext directory .
-                             
-			  sts:/usr/src/smslib_source/apache-log4j-1.2.16# cp log4j-1.2.16.jar /usr/src/jdk1.6.0_20/jre/lib/ext/
 
-		 -> JSMPP library installation : 
-				
-		      --> Download lattest jsmpp library from http://code.google.com/p/jsmpp/downloads/list and save it in smslib_source 
-			  directory .
-                      --> Uncompress it depending upon your source extension . 
-                      --> Copy jsmpp<version>.jar file into /usr/src/jdk<version>/jre/lib/ext directory .
-			
-			sts:/usr/src/smslib_source/jsmpp-2.1.0# cp *.jar /usr/src/jdk1.6.0_20/jre/lib/ext/
+         -> Apache ant installation :
+               
+             --> Download latest Apache Ant from http://ant.apache.org/bindownload.cgi 
+             --> Decompress it and save it in smslib_source directory .
+             --> Now append bin location  into PATH variable .  Edit .bashrc file again and relplace export path variable with below .
 
-		 ->  Apache Jakarta Commons - NET library Installation :  
+                 export PATH="/usr/src/jdk1.6.0_20/bin:/usr/src/smslib_source/apache-ant-1.8.1/bin:$PATH"
 
-		      --> Download lattest NET library from http://commons.apache.org/downloads/download_net.cgi and save it in smslib_source 
-                          directory .
-		      --> Uncompress it depending upon your source extension . 
-                      --> Copy all jar files into /usr/src/jdk<version>/jre/lib/ext directory .
-       			                
-		     	sts:/usr/src/smslib_source/commons-net-2.0# cp *.jar ../../jdk1.6.0_20/jre/lib/ext/
+             --> check ant command version after running 
+                 sts:/usr/src/smslib_source/apache-ant-1.8.1/bin# ~/.bashrc
+                 sts:/usr/src/smslib_source/rxtx-2.1-7-bins-r2/Linux/i686-unknown-linux-gnu# ant -version
+       	  Apache Ant version 1.8.1 compiled on April 30 2010
 
-		-> Java mysql Connector Installation :
-
-		     --> if you are using mysql then we have to download the java mysql from http://dev.mysql.com/downloads/connector/j/ 
-                         and save it in smslib_source .
-                     --> Uncompress it depending upon your source extension .
-		     --> Copy  mysql-connector-java<version>.jar into /usr/src/jdk<version>/jre/lib/ext directory .
-		      
-			sts:/usr/src/smslib_source/mysql-connector-java-5.1.12# cp mysql-connector-java-5.1.12-bin.jar  ../../jdk1.6.0_20/jre/lib/ext
+        -> Apache log4j library installation :
+                 
+             --> Download lattest appache log4j from http://logging.apache.org/log4j/1.2/download.html and save it in smslib_source
+                 directory .
+             --> Uncompress it dpending upon your source extension .
+             --> copy log4j jar file into /usr/src/jdk<version>/jre/lib/ext directory .
                     
-	   9 ) Running out SMSserver :
-                    	 
-		     --> As of now , we have installed all dependencies for  SMSServer . Let us play with SMSServer right now .
+       	  sts:/usr/src/smslib_source/apache-log4j-1.2.16# cp log4j-1.2.16.jar /usr/src/jdk1.6.0_20/jre/lib/ext/
 
-               		        sts:/usr/src/smslib_source/jsmpp-2.1.0# cd ../smslib
-				sts:/usr/src/smslib_source/smslib# ant
+        -> JSMPP library installation : 
+       		
+             --> Download lattest jsmpp library from http://code.google.com/p/jsmpp/downloads/list and save it in smslib_source 
+       	  directory .
+             --> Uncompress it depending upon your source extension . 
+             --> Copy jsmpp<version>.jar file into /usr/src/jdk<version>/jre/lib/ext directory .
+       	
+       	sts:/usr/src/smslib_source/jsmpp-2.1.0# cp *.jar /usr/src/jdk1.6.0_20/jre/lib/ext/
 
-				Buildfile: build.xml
-				
-				usage:
-				     [echo] 
-				     [echo] 		SMSLib v3
-				     [echo] 		(c) 2002-2010, Thanasis Delenikas
-				     [echo] 		Visit http://smslib.org for latest information.
-				     [echo] 		SMSLib is distributed under the Apache v2.0 license.
-				     [echo] 	
-				     [echo] 		Accepted targets:
-				     [echo] 			clean: Clean everything.
-				     [echo] 			doc: Generate JavaDoc pages for the core library.
-				     [echo] 			compile-smslib: Compiles the core library.
-				     [echo] 			build-smslib: Builds the core library.
-				     [echo] 			compile-smsserver: Compiles the SMSServer application.
-				     [echo] 			build-smsserver: Builds the SMSServer application (bundled with SMSLib core files in one jar).
-				     [echo] 			build-smsserver-standalone: Builds the SMSServer application as a standalone jar (without SMSLib core files).
-				     [echo] 		
-				
-				BUILD SUCCESSFUL
-				Total time: 0 seconds
-        	                sts:/usr/src/smslib_source/smslib# ant clean
+        ->  Apache Jakarta Commons - NET library Installation :  
 
-				Buildfile: /usr/src/smslib_source/smslib/build.xml
-				
-				clean:
-				   [delete] Deleting directory /usr/src/smslib_source/smslib/dist
+             --> Download lattest NET library from http://commons.apache.org/downloads/download_net.cgi and save it in smslib_source 
+                 directory .
+             --> Uncompress it depending upon your source extension . 
+             --> Copy all jar files into /usr/src/jdk<version>/jre/lib/ext directory .
+       	                
+            	sts:/usr/src/smslib_source/commons-net-2.0# cp *.jar ../../jdk1.6.0_20/jre/lib/ext/
 
-				sts:/usr/src/smslib_source/smslib# ant build-smsserver
-				Buildfile: /usr/src/smslib_source/smslib/build.xml
-				
-				compile.smsserver:
-				
-				pre-build.smsserver:
-				    [mkdir] Created dir: /usr/src/smslib_source/smslib/dist/lib
-				     [copy] Copying 1 file to /usr/src/smslib_source/smslib/dist/lib
-				
-				build.smsserver:
-				      [jar] Building jar: /usr/src/smslib_source/smslib/dist/lib/smsserver-3.4.6.jar
-				
-				build-smsserver:
-				
-				BUILD SUCCESSFUL
-				Total time: 0 seconds
+       -> Java mysql Connector Installation :
 
-				sts:/usr/src/smslib_source/smslib# cd dist/classes/
+            --> if you are using mysql then we have to download the java mysql from http://dev.mysql.com/downloads/connector/j/ 
+                and save it in smslib_source .
+            --> Uncompress it depending upon your source extension .
+            --> Copy  mysql-connector-java<version>.jar into /usr/src/jdk<version>/jre/lib/ext directory .
+             
+       	sts:/usr/src/smslib_source/mysql-connector-java-5.1.12# cp mysql-connector-java-5.1.12-bin.jar  ../../jdk1.6.0_20/jre/lib/ext
+           
+Compile and Run SMSserver :
+--------------------------
+                   	 
+     --> As of now , we have installed all dependencies for  SMSServer . Let us play with SMSServer right now .
 
-				Now copy the sample SMSServer.conf into this directory . Please have look on http://www.smslib.org/doc/smsserver/
+	        sts:/usr/src/smslib_source/jsmpp-2.1.0# cd ../smslib
+		sts:/usr/src/smslib_source/smslib# ant
 
-				sts:/usr/src/smslib_source/smslib/dist/classes# cp ../../src/java/org/smslib/smsserver/SMSServer.conf .
+		Buildfile: build.xml
+		
+		usage:
+		     [echo] 
+		     [echo] 		SMSLib v3
+		     [echo] 		(c) 2002-2010, Thanasis Delenikas
+		     [echo] 		Visit http://smslib.org for latest information.
+		     [echo] 		SMSLib is distributed under the Apache v2.0 license.
+		     [echo] 	
+		     [echo] 		Accepted targets:
+		     [echo] 			clean: Clean everything.
+		     [echo] 			doc: Generate JavaDoc pages for the core library.
+		     [echo] 			compile-smslib: Compiles the core library.
+		     [echo] 			build-smslib: Builds the core library.
+		     [echo] 			compile-smsserver: Compiles the SMSServer application.
+		     [echo] 			build-smsserver: Builds the SMSServer application (bundled with SMSLib core files in one jar).
+		     [echo] 			build-smsserver-standalone: Builds the SMSServer application as a standalone jar (without SMSLib core files).
+		     [echo] 		
+		
+		BUILD SUCCESSFUL
+		Total time: 0 seconds
+                sts:/usr/src/smslib_source/smslib# ant clean
 
-				sts:/usr/src/smslib_source/smslib/dist/classes# java org.smslib.smsserver.SMSServer
-				SMSLib: A Java API library for sending and receiving SMS via a GSM modem or other supported gateways.
-				This software is distributed under the terms of the Apache v2.0 License.
-				Web Site: http://smslib.org
-				
-				SMSLib API version: 3.4.6
-				SMSServer version: 3.4.6
-				log4j:WARN No appenders could be found for logger (smslib).
-				log4j:WARN Please initialize the log4j system properly.
-				log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+		Buildfile: /usr/src/smslib_source/smslib/build.xml
+		
+		clean:
+		   [delete] Deleting directory /usr/src/smslib_source/smslib/dist
 
-			        Note: 
-                                    While running if the log4j say any warnings same as above then we have to copy log4j.properties file . 
-                                    Because it needs some log configurations where the smsserver runs . So we do that so . Run 
-				    following command . 
+		sts:/usr/src/smslib_source/smslib# ant build-smsserver
+		Buildfile: /usr/src/smslib_source/smslib/build.xml
+		
+		compile.smsserver:
+		
+		pre-build.smsserver:
+		    [mkdir] Created dir: /usr/src/smslib_source/smslib/dist/lib
+		     [copy] Copying 1 file to /usr/src/smslib_source/smslib/dist/lib
+		
+		build.smsserver:
+		      [jar] Building jar: /usr/src/smslib_source/smslib/dist/lib/smsserver-3.4.6.jar
+		
+		build-smsserver:
+		
+		BUILD SUCCESSFUL
+		Total time: 0 seconds
 
-			       sts:/usr/src/smslib_source/smslib/dist/classes# cp ../../misc/Log4j\ Sample\ Configuration/log4j.properties  .
+		sts:/usr/src/smslib_source/smslib# cd dist/classes/
 
-			--> copy sample configuration:
+		Now copy the sample SMSServer.conf into this directory . Please have look on http://www.smslib.org/doc/smsserver/
 
-	                         sts:/var/www/SMSSserverGui# cp config/SMSServer.conf /usr/src/smslib_source/smslib/dist/classes/
+		sts:/usr/src/smslib_source/smslib/dist/classes# cp ../../src/java/org/smslib/smsserver/SMSServer.conf .
 
-			Note :
+		sts:/usr/src/smslib_source/smslib/dist/classes# java org.smslib.smsserver.SMSServer
+		SMSLib: A Java API library for sending and receiving SMS via a GSM modem or other supported gateways.
+		This software is distributed under the terms of the Apache v2.0 License.
+		Web Site: http://smslib.org
+		
+		SMSLib API version: 3.4.6
+		SMSServer version: 3.4.6
+		log4j:WARN No appenders could be found for logger (smslib).
+		log4j:WARN Please initialize the log4j system properly.
+		log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
 
-			Walkthrough SMSServer.conf file and replace device path with appropriate values .			      
+	        Note: 
+                    While running if the log4j say any warnings same as above then we have to copy log4j.properties file . 
+                    Because it needs some log configurations where the smsserver runs . So we do that so . Run 
+		    following command . 
+
+	       sts:/usr/src/smslib_source/smslib/dist/classes# cp ../../misc/Log4j\ Sample\ Configuration/log4j.properties  .
+
+	--> copy sample configuration:
+
+                 sts:/var/www/SMSSserverGui# cp config/SMSServer.conf /usr/src/smslib_source/smslib/dist/classes/
+
+	Note :
+
+	Walkthrough SMSServer.conf file and replace device path with appropriate values .			      
 
 
-	10) SMSServer and Rails Integration : 
-	    --------------------------------
+SMSServer and Rails Integration : 
+---------------------------------
 
-                    Both Rails and SMSServer sync with Database SMSServer's tables . Rails acts as web interface between user 
-                    and those tables( SMSServer ) . Please have look on http://www.smslib.org/doc/smsserver/interfaces/database/ 
-                    for more details .
+	 Both Rails and SMSServer sync with Database SMSServer's tables . Rails acts as web interface between user 
+    	 and those tables( SMSServer ) . Please have look on http://www.smslib.org/doc/smsserver/interfaces/database/ 
+       	 for more details .
 
 	    ->  Installing mysql and rails on Debian or ubuntu : 
 
@@ -322,8 +324,8 @@ Installing Java SMSlib and SMSServer in Linux :
         
 
       
-		SMSlib and Ruby on Rails Integration : 
-		-------------------------------------
+SMSlib and Ruby on Rails Integration : 
+-------------------------------------
      
     		  Here Ruby on Rails act as front end application for SMSServer's tables . In contrast to say , the SMSServer aggressively watches the tables 
     		  of SMSServer; To know more about SMSServer tables . Please visit  http://smslib.org/doc/smsserver/interfaces/database/   .  Here we are going to 
@@ -351,11 +353,11 @@ Installing Java SMSlib and SMSServer in Linux :
 			db1.retries=0
 			db1.update_outbound_on_statusreport=no
 
-            11) Database configurations on SMSServerGUI( rails application ) and SMSServer:
-	        --------------------------------------------------------------------------
+Database configurations on SMSServerGUI( rails application ) and SMSServer:
+---------------------------------------------------------------------------
 			
 
-		   -> SMSServerGui Database Configurations :
+		   i) SMSServerGui Database Configurations :
 
 		        --> Go to /var/www/SMSServerGui
                         --> configure database in database.yml 
@@ -381,7 +383,7 @@ Installing Java SMSlib and SMSServer in Linux :
 			   Now all the tables have been created in smslib database . Cross check the same .
 
 
-		 ->  SMSServer Database Configuration :
+		 ii) SMSServer Database Configuration :
 				
 
 			  copy sample configuraion file and put it in SMServer directory . It has configuration settings for mysql database .
@@ -400,16 +402,12 @@ Installing Java SMSlib and SMSServer in Linux :
 
 		   Note : 
 
-			After applying this patch . Follow 10th step .
-
-
+			After applying this patch . Follow "Compile and Run SMSserver" steps .
 
 		Now the time had come to run both SMSServerGui and SMSserver as well .
 
-
-
-	     12) Running SMSserver :
-			 ------------------
+Running SMSserver :
+-------------------
 		
 		sts:/usr/src/smslib_source/smslib/dist/classes# java  -Dsmslib.serial.polling=true -Dgnu.io.rxtx.SerialPorts=/dev/ttyACM0 org/smslib/smsserver/SMSServer
 
@@ -469,8 +467,9 @@ Installing Java SMSlib and SMSServer in Linux :
 		 If you have any problem to run SMSServer then visit www.smslib.org for more documenation than this .
                       
 
-         13)  Running SMSServerGui :
-	      ---------------------
+Running SMSServerGui :
+----------------------
+
 
 	          sts:/var/www/SMSSserverGui# ruby script/server 
 	        	=> Booting WEBrick
@@ -485,8 +484,8 @@ Installing Java SMSlib and SMSServer in Linux :
 	         Now go to firefox and IE type the URL mentioned above . Give username and password as smslib 
 
 
-	 For windows OS:
-	 ---------------
+For windows OS:
+---------------
         	 To installing smslib and SMSServerGui in windows almost same as linux . You can find more information 
 		 to install smslib on windows from  http://smslib.org/doc/installation/ .
 
