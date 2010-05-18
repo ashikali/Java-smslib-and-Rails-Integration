@@ -150,7 +150,6 @@ SMSlib SMSServer Installation :
 
 
    iii) Apache ant installation :
-        ------------------------
                
              --> Download latest Apache Ant from http://ant.apache.org/bindownload.cgi 
              --> Decompress it and save it in smslib_source directory .
@@ -165,7 +164,6 @@ SMSlib SMSServer Installation :
        	  Apache Ant version 1.8.1 compiled on April 30 2010
 
    iv) Apache log4j library installation :
-       ----------------------------------
                  
              --> Download lattest appache log4j from http://logging.apache.org/log4j/1.2/download.html and save it in smslib_source
                  directory .
@@ -175,7 +173,6 @@ SMSlib SMSServer Installation :
        	  sts:/usr/src/smslib_source/apache-log4j-1.2.16# cp log4j-1.2.16.jar /usr/src/jdk1.6.0_20/jre/lib/ext/
 
    v) JSMPP library installation : 
-      --------------------------
        		
              --> Download lattest jsmpp library from http://code.google.com/p/jsmpp/downloads/list and save it in smslib_source 
        	         directory .
@@ -185,7 +182,6 @@ SMSlib SMSServer Installation :
        	sts:/usr/src/smslib_source/jsmpp-2.1.0# cp *.jar /usr/src/jdk1.6.0_20/jre/lib/ext/
 
   vi) Apache Jakarta Commons - NET library Installation :  
-      --------------------------------------------------
 
              --> Download lattest NET library from http://commons.apache.org/downloads/download_net.cgi and save it in smslib_source 
                  directory .
@@ -195,7 +191,6 @@ SMSlib SMSServer Installation :
             	sts:/usr/src/smslib_source/commons-net-2.0# cp *.jar ../../jdk1.6.0_20/jre/lib/ext/
 
   vii) Java mysql Connector Installation :
-       ----------------------------------
 
             --> if you are using mysql then we have to download the java mysql from http://dev.mysql.com/downloads/connector/j/ 
                 and save it in smslib_source .
@@ -282,7 +277,6 @@ Compile and Run SMSserver :
 	       sts:/usr/src/smslib_source/smslib/dist/classes# cp ../../misc/Log4j\ Sample\ Configuration/log4j.properties  .
 
        ii) Copy sample configuration :
-           -------------------------	
 
                  sts:/var/www/SMSSserverGui# cp config/SMSServer.conf /usr/src/smslib_source/smslib/dist/classes/
 
@@ -292,7 +286,6 @@ Compile and Run SMSserver :
 
 
 SMSServer and Rails Integration : 
----------------------------------
 
 	 Both Rails and SMSServer sync with Database SMSServer's tables . Rails acts as web interface between user 
     	 and those tables( SMSServer ) . Please have look on http://www.smslib.org/doc/smsserver/interfaces/database/ 
@@ -354,7 +347,6 @@ SMSServer and Rails Integration :
 
       
 Contradictions and patches to integrate SMSlib with Ruby on Rails  : 
-------------------------------------------------------------------
      
 	  Here Ruby on Rails act as front end application for SMSServer's tables . In contrast to say , the SMSServer aggressively watches the tables 
 	  of SMSServer; To know more about SMSServer tables . Please visit  http://smslib.org/doc/smsserver/interfaces/database/   .  Here we are going to 
@@ -414,7 +406,6 @@ Contradictions and patches to integrate SMSlib with Ruby on Rails  :
 	 
 
 Create SMSServer Tables using Rails rake
-----------------------------------------
 			
 
    i) SMSServerGui Database Configurations :
@@ -445,7 +436,6 @@ Create SMSServer Tables using Rails rake
 
 
 Running SMSserver :
--------------------
 		
 		sts:/usr/src/smslib_source/smslib/dist/classes# java  -Dsmslib.serial.polling=true -Dgnu.io.rxtx.SerialPorts=/dev/ttyACM0 org/smslib/smsserver/SMSServer
 
@@ -501,7 +491,6 @@ Running SMSserver :
                       
 
 Running SMSServerGui :
-----------------------
 
 
 	          sts:/var/www/SMSSserverGui# ruby script/server 
@@ -518,7 +507,6 @@ Running SMSServerGui :
 
 
 For windows OS:
----------------
         	 To installing smslib and SMSServerGui in windows almost same as linux . You can find more information 
 		 to install smslib on windows from  http://smslib.org/doc/installation/ .
 
