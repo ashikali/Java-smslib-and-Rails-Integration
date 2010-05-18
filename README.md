@@ -22,32 +22,50 @@ About SMSlib SMSServer :
 
       Please visit http://smslib.org/doc/smsserver/  to know about full funtionality of SMSServer . 
 
-Installing Java SMSlib and SMSServer in Linux : 
------------------------------------------------
+About SMSServerGui-2.0 :
+------------------------
 
-I choosed Debian and Ubuntu distributions of linux . 
+      It is a Ruby on Rails based web front for SMSServer . It acts as interface between users and SMSserver . Users 
+      can load , unload sms . Also they can monitor SMSServer from this .
+
+OS Compatibility:
+-----------------
+
+      Normally all the java and Ruby on Rails prorams work well on both windows and linux operating system . This frontend has 
+      been throughly tested on both windows and linux .
+
+      For windows I choosed XP ;  For linux I choosed Ubuntu and Debian distributions 
+
+Java jdk Installation:
+------------------------------
         
-      
-1) Create the smslib_source directory in /usr/src . 
+i) Create the smslib_source directory in /usr/src . 
 
-2) download the jdk-6u20-linux-i586.bin from http://java.sun.com/javase/downloads/widget/jdk6.jsp 
+ii) Download  jdk-6u20-linux-i586.bin from http://java.sun.com/javase/downloads/widget/jdk6.jsp 
 
-3) run the jdk-6u20-linux-i586.bin file in your console by typing 
-         	
+iv) Run the jdk-6u20-linux-i586.bin file in your console by typing 
+
        sts:/usr/src#>./jdk-6u20-linux-i586.bin        
 
      Now we have installed lattest java version .
+	
+   Note :
+	Depending upon your OS , use appropriate package name . 
+	My OS Details are,
+	sts:~# uname -a
+	Linux sts 2.6.26-2-686 #1 SMP Wed Aug 19 06:06:52 UTC 2009 i686 GNU/Linux
 
-4) without installing jdk , there may be a chance of Java is avaliable in our Linux operating system . 
-    It may not be up to date . So we have to set the path variable for current jdk bin directory . 
+
+v) Before installing jdk , there may be a chance of Java is avaliable in our Linux operating system . 
+   It may not be up to date . So we have to set the path variable for current jdk bin directory . 
 
     Add below line into your .bashrc file . 
 
     export PATH="/usr/src/jdk1.6.0_20/bin:$PATH"
 
-5) run the .bashrc file by typing in your console #>./.bashrc 
+vi) Run the .bashrc file by typing in your console #>./.bashrc 
 
-6) Check the java version by typing 
+vii) Check the java version by typing 
    
        sts:~# echo $PATH
        /usr/src/jdk1.6.0_20/bin:/usr/src/jdk1.6.0_20/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -59,33 +77,33 @@ I choosed Debian and Ubuntu distributions of linux .
       Right now we installed current version of  jdk . 
 
      Note : 
-         by the time I used jdk 1.6.0_20 version . Please replace with current jdk for best results .
+         By the time I used jdk 1.6.0_20 version . Please replace with current jdk for best results .
+
+Mysql Database Installation :
+-----------------------------
+
+    sts:~#aptitude install mysql-server
+     
+    loging as mysql administrator . And create the smslib named database and user with password 'smslib' .
+
+    sts:~#mysql -u root -p
+
+    mysql> create database smslib ;
+    Query OK, 0 rows affected (0.01 sec)
+    mysql> grant all on smslib.* to smslib@localhost identified by 'smslib' ;
+    Query OK, 0 rows affected (0.02 sec)
 
 
-7) Mysql installation and creating database for smslib .
+SMSlib SMSServer Installation :
+-------------------------------
 
-         -> Install mysql using aptiude command .
-       	
-          sts:~#aptitude install mysql-server
-          
-         -> loging as mysql administrator . And create the smslib named database and user with password 'smslib' .
-
-         sts:~#mysql -u root -p
-
-         mysql> create database smslib ;
-         Query OK, 0 rows affected (0.01 sec)
-         mysql> grant all on smslib.* to smslib@localhost identified by 'smslib' ;
-         Query OK, 0 rows affected (0.02 sec)
-
-
-
-8) Now download the current smslib from http://smslib.org/download/files/smslib-v3.4.6.zip 
-   and unzip it in /usr/src/smslib_sources/smslib directory . 
+    i) Download the current smslib from http://smslib.org/download/files/smslib-v3.4.6.zip 
+       and unzip it in /usr/src/smslib_sources/smslib directory . 
 
       we have to install followings dependencies to make smslib work  .
      
-      Java Communications Library Installation :
-      -----------------------------------------
+   ii) Java Communications Library Installation :
+       -----------------------------------------
            
         This library is used to interact with serial devices such as modem,mobile ..etc . Along with rxtx jar; we have to install the two .so files well . 
         It is better for us to install it from synaptic,apt-get or aptitute with go for downloading rxtx library and compiling it .
@@ -116,20 +134,23 @@ I choosed Debian and Ubuntu distributions of linux .
 
           -->  Now copy RXTXcomm.jar file into /usr/src/jdk1.6.0_20/jre/lib/ext .
        	
-        That's it . we have successfully installed RXTX java communication library on Debian or Ubuntu OS .
+        That is it . We have successfully installed RXTX java communication library on Debian or Ubuntu OS .
 
 
        Note :
               if you are unable to findout /usr/share/java or/and /usr/lib/jvm . Then you may want to install default java package from 
               OS repository .
 
-              we need to install default java; then only we can get precompiled librxtx-java library . Just we are cheating here .  After installing 
-              this default-java be ensure that you are not set PATH variable value to this java binary . 
+              we need to install default java; then only we can get precompiled librxtx-java library . Just we are cheating here .  
+	      After installing this default-java be ensure that you are not set PATH variable value to this java binary . 
 
               After installation please check java version well . Because this java version not compatible with current smslib .
 
+	      Why we are cheating over here is that installing rxtx is not easy .
 
-         -> Apache ant installation :
+
+   iii) Apache ant installation :
+        ------------------------
                
              --> Download latest Apache Ant from http://ant.apache.org/bindownload.cgi 
              --> Decompress it and save it in smslib_source directory .
@@ -140,9 +161,11 @@ I choosed Debian and Ubuntu distributions of linux .
              --> check ant command version after running 
                  sts:/usr/src/smslib_source/apache-ant-1.8.1/bin# ~/.bashrc
                  sts:/usr/src/smslib_source/rxtx-2.1-7-bins-r2/Linux/i686-unknown-linux-gnu# ant -version
+
        	  Apache Ant version 1.8.1 compiled on April 30 2010
 
-        -> Apache log4j library installation :
+   iv) Apache log4j library installation :
+       ----------------------------------
                  
              --> Download lattest appache log4j from http://logging.apache.org/log4j/1.2/download.html and save it in smslib_source
                  directory .
@@ -151,16 +174,18 @@ I choosed Debian and Ubuntu distributions of linux .
                     
        	  sts:/usr/src/smslib_source/apache-log4j-1.2.16# cp log4j-1.2.16.jar /usr/src/jdk1.6.0_20/jre/lib/ext/
 
-        -> JSMPP library installation : 
+   v) JSMPP library installation : 
+      --------------------------
        		
              --> Download lattest jsmpp library from http://code.google.com/p/jsmpp/downloads/list and save it in smslib_source 
-       	  directory .
+       	         directory .
              --> Uncompress it depending upon your source extension . 
              --> Copy jsmpp<version>.jar file into /usr/src/jdk<version>/jre/lib/ext directory .
        	
        	sts:/usr/src/smslib_source/jsmpp-2.1.0# cp *.jar /usr/src/jdk1.6.0_20/jre/lib/ext/
 
-        ->  Apache Jakarta Commons - NET library Installation :  
+  vi) Apache Jakarta Commons - NET library Installation :  
+      --------------------------------------------------
 
              --> Download lattest NET library from http://commons.apache.org/downloads/download_net.cgi and save it in smslib_source 
                  directory .
@@ -169,7 +194,8 @@ I choosed Debian and Ubuntu distributions of linux .
        	                
             	sts:/usr/src/smslib_source/commons-net-2.0# cp *.jar ../../jdk1.6.0_20/jre/lib/ext/
 
-       -> Java mysql Connector Installation :
+  vii) Java mysql Connector Installation :
+       ----------------------------------
 
             --> if you are using mysql then we have to download the java mysql from http://dev.mysql.com/downloads/connector/j/ 
                 and save it in smslib_source .
@@ -181,7 +207,7 @@ I choosed Debian and Ubuntu distributions of linux .
 Compile and Run SMSserver :
 --------------------------
                    	 
-     --> As of now , we have installed all dependencies for  SMSServer . Let us play with SMSServer right now .
+     i) As of now , we have installed all dependencies for SMSServer . Let us play with SMSServer right now .
 
 	        sts:/usr/src/smslib_source/jsmpp-2.1.0# cd ../smslib
 		sts:/usr/src/smslib_source/smslib# ant
@@ -255,7 +281,8 @@ Compile and Run SMSserver :
 
 	       sts:/usr/src/smslib_source/smslib/dist/classes# cp ../../misc/Log4j\ Sample\ Configuration/log4j.properties  .
 
-	--> copy sample configuration:
+       ii) Copy sample configuration :
+           -------------------------	
 
                  sts:/var/www/SMSSserverGui# cp config/SMSServer.conf /usr/src/smslib_source/smslib/dist/classes/
 
@@ -271,7 +298,8 @@ SMSServer and Rails Integration :
     	 and those tables( SMSServer ) . Please have look on http://www.smslib.org/doc/smsserver/interfaces/database/ 
        	 for more details .
 
-	    ->  Installing mysql and rails on Debian or ubuntu : 
+	    Installing mysql and rails on Debian or ubuntu : 
+	    -----------------------------------------------
 
 	       --> Ruby On Rails Installation :
 
@@ -290,12 +318,13 @@ SMSServer and Rails Integration :
 
 		      ---> gem Installation :
 
-                          i ) Download current version of rubygems from http://rubyforge.org/frs/?group_id=126 and save it in /usr/src . I choosed 1.3.5
+                          i ) Download current version of rubygems from http://rubyforge.org/frs/?group_id=126 and save it in /usr/src . 
+			      I choosed 1.3.5
 			  ii) Decompress it and go into the directory .
 
 				sts:/usr/src/rubygems/rubygems-1.3.5# ruby setup.rb 
 
-			 iii)Now gem1.X has been installed successfully . Create soft link for gem1.X as gem  in /usr/bin directort .
+			 iii) Now gem1.X has been installed successfully . Create soft link for gem1.X as gem  in /usr/bin directort .
 
 		      ---> Rails Installation 
                        
@@ -324,79 +353,55 @@ SMSServer and Rails Integration :
         
 
       
-SMSlib and Ruby on Rails Integration : 
--------------------------------------
+Contradictions and patches to integrate SMSlib with Ruby on Rails  : 
+------------------------------------------------------------------
      
-    		  Here Ruby on Rails act as front end application for SMSServer's tables . In contrast to say , the SMSServer aggressively watches the tables 
-    		  of SMSServer; To know more about SMSServer tables . Please visit  http://smslib.org/doc/smsserver/interfaces/database/   .  Here we are going to 
-    		  feed the SMSServer via Ruby on Rails application .
+	  Here Ruby on Rails act as front end application for SMSServer's tables . In contrast to say , the SMSServer aggressively watches the tables 
+	  of SMSServer; To know more about SMSServer tables . Please visit  http://smslib.org/doc/smsserver/interfaces/database/   .  Here we are going to 
+	  feed the SMSServer via Ruby on Rails application .
 
-    		  To integrate SMSServer Tables with Rails application , the tables should be in under some rules and regulations .
+	  To integrate SMSServer Tables with Rails application , the tables should be in under some rules and regulations .
 
-    		  What are those Rules and Regulations : 
-		
-          	      * table name should be in plural form .  
- 
-                       we can achive this by configuring SMSServer.conf file . For example in SMSServer.conf file .
-		       # Here is an example of a MySQL database interface.
+	  What are those Rules and Regulations how to noramalize this: 
+	  -----------------------------------------------------------
+	
+  	      i) Table name should be in plural form .  
 
-			interface.0=db1, Database
-			db1.type=mysql
-			db1.url=jdbc:mysql://localhost:3306/smslib?autoReconnect=true
-			db1.driver=com.mysql.jdbc.Driver
-			db1.username=smslib
-			db1.password=jsmslib
-			db1.tables.sms_in=smsserver_in_messages
-			db1.tables.sms_out=smsserver_out_messages
-			db1.tables.calls=smsserver_calls
-			db1.batch_size=50
-			db1.retries=0
-			db1.update_outbound_on_statusreport=no
+               we can achive this by configuring SMSServer.conf file . For example in SMSServer.conf file .
+	       # Here is an example of a MySQL database interface.
 
-Database configurations on SMSServerGUI( rails application ) and SMSServer:
----------------------------------------------------------------------------
-			
+		interface.0=db1, Database
+		db1.type=mysql
+		db1.url=jdbc:mysql://localhost:3306/smslib?autoReconnect=true
+		db1.driver=com.mysql.jdbc.Driver
+		db1.username=smslib
+		db1.password=jsmslib
+		db1.tables.sms_in=smsserver_in_messages
+		db1.tables.sms_out=smsserver_out_messages
+		db1.tables.calls=smsserver_calls
+		db1.batch_size=50
+		db1.retries=0
+		db1.update_outbound_on_statusreport=no
 
-		   i) SMSServerGui Database Configurations :
+	  	It it is easy for us to change the tables names in SMSServer.conf . Yet one more modifications we need;  read further .
 
-		        --> Go to /var/www/SMSServerGui
-                        --> configure database in database.yml 
-                        --> sts:/var/www/SMSSserverGui# rake db:schema:load
-				(in /var/www/SMSSserverGui)
-				-- create_table("outgoing_sms_content_groups", {:force=>true})
-				   -> 0.0463s
-				-- create_table("outgoing_sms_number_groups", {:force=>true})
-				   -> 0.0032s
-				-- create_table("smsserver_calls", {:force=>true})
-				   -> 0.0290s
-				-- create_table("smsserver_in_messages", {:force=>true})
-				   -> 0.0035s
-				-- create_table("smsserver_out_messages", {:force=>true})
-				   -> 0.0044s
-				-- create_table("users", {:force=>true})
-				   -> 0.0025s
-				-- initialize_schema_migrations_table()
-				   -> 0.0175s
-				-- assume_migrated_upto_version(0)
-				   -> 0.0010s
+	    	  copy sample configuraion file and put it in SMServer directory . It has configuration settings for mysql database .
 
-			   Now all the tables have been created in smslib database . Cross check the same .
+		  sts:/var/www/SMSSserverGui# cp config/SMSServer.conf /usr/src/smslib_source/smslib/dist/classes/
+
+         	  Note :
+
+                      Have look on this SMSServer.conf file and configure your modem here  . By default it may have /dev/ttyACM0 as device path .
+
+	     
+   	      ii) Table Column names should not be same as its object predefined methods .
 
 
-		 ii) SMSServer Database Configuration :
-				
+	          some of the column specified in http://smslib.org/doc/smsserver/interfaces/database/ are creating contradiction with  rails 
+		  application . For example type in smsserver_in table . And type,error in smsserver_out tables . After go walkthrough Database.java file in smslib
+                  source I changed some of colums names . Now both rails and SMSServer working well with this .
 
-			  copy sample configuraion file and put it in SMServer directory . It has configuration settings for mysql database .
-			  sts:/var/www/SMSSserverGui# cp config/SMSServer.conf /usr/src/smslib_source/smslib/dist/classes/
-
-			  Note :
-                                Have look on this SMSServer.conf file and configure your modem here  . By default it may have /dev/ttyACM0 as device path .
-
-		          some of the column specified in http://smslib.org/doc/smsserver/interfaces/database/ are creating contradiction with  rails 
-		    application . For example type in smsserver_in table . And type,error in smsserver_out tables . After go walkthrough Database.java file in smslib
-                    source I changed some of colums names . Now both rails and SMSServer working well with this .
-
-		   I used smslib 3.4.6 which is the current source right now . Replace Database.java with below command .
+		   I used smslib 3.4.6 which is the current source right now . Replace Database.java using below command .
 	
 			sts:/var/www/SMSSserverGui# cp config/Database.java /usr/src/smslib_source/smslib/src/java/org/smslib/smsserver/interfaces/
 
@@ -404,7 +409,40 @@ Database configurations on SMSServerGUI( rails application ) and SMSServer:
 
 			After applying this patch . Follow "Compile and Run SMSserver" steps .
 
+
 		Now the time had come to run both SMSServerGui and SMSserver as well .
+	 
+
+Create SMSServer Tables using Rails rake
+----------------------------------------
+			
+
+   i) SMSServerGui Database Configurations :
+
+        --> Go to /var/www/SMSServerGui
+        --> configure database in database.yml 
+        --> sts:/var/www/SMSSserverGui# rake db:schema:load
+		(in /var/www/SMSSserverGui)
+		-- create_table("outgoing_sms_content_groups", {:force=>true})
+		   -> 0.0463s
+		-- create_table("outgoing_sms_number_groups", {:force=>true})
+		   -> 0.0032s
+		-- create_table("smsserver_calls", {:force=>true})
+		   -> 0.0290s
+		-- create_table("smsserver_in_messages", {:force=>true})
+		   -> 0.0035s
+		-- create_table("smsserver_out_messages", {:force=>true})
+		   -> 0.0044s
+		-- create_table("users", {:force=>true})
+		   -> 0.0025s
+		-- initialize_schema_migrations_table()
+		   -> 0.0175s
+		-- assume_migrated_upto_version(0)
+		   -> 0.0010s
+
+	   Now all the tables have been created in smslib database . Cross check the same .
+
+
 
 Running SMSserver :
 -------------------
@@ -437,19 +475,14 @@ Running SMSserver :
 		=========================================
 		Native lib Version = RXTX-2.1-7
 		Java lib Version   = RXTX-2.1-7
-		8575   2010-05-17 17:54:54,058 [Thread-5] INFO  org.smslib.helper.Logger  - 
-		GTW: modem1: GSM: Registered to home network.
-		8981   2010-05-17 17:54:54,464 [Thread-5] INFO  org.smslib.helper.Logger  - GTW: modem1: MEM: 
-		Storage Locations Found: SM ME SM_P ME_P MT
+		8575   2010-05-17 17:54:54,058 [Thread-5] INFO  org.smslib.helper.Logger  - GTW: modem1: GSM: Registered to home network.
+		8981   2010-05-17 17:54:54,464 [Thread-5] INFO  org.smslib.helper.Logger  - GTW: modem1: MEM: Storage Locations Found: SM ME SM_P ME_P MT
 		9172   2010-05-17 17:54:54,655 [Thread-5] INFO  org.smslib.helper.Logger  - CNMI: No best match, returning: 1
 		9574   2010-05-17 17:54:55,057 [Thread-5] INFO  org.smslib.helper.Logger  - GTW: modem1: Gateway started.
-		10281  2010-05-17 17:54:55,764 [SMSServer - OutboundPollingThread] INFO  
-			org.smslib.helper.Logger  - SMSServer: sending asynchronously... [0]
-		20288  2010-05-17 17:55:05,771 [SMSServer - OutboundPollingThread] INFO  
-			org.smslib.helper.Logger  - SMSServer: sending asynchronously... [0]
+		10281  2010-05-17 17:54:55,764 [SMSServer - OutboundPollingThread] INFO org.smslib.helper.Logger  - SMSServer: sending asynchronously... [0]
+		20288  2010-05-17 17:55:05,771 [SMSServer - OutboundPollingThread] INFO org.smslib.helper.Logger  - SMSServer: sending asynchronously... [0]
 	
 
-		
             Note :
 		
                 In the java command I had passed following arguments . 
@@ -490,11 +523,10 @@ For windows OS:
 		 to install smslib on windows from  http://smslib.org/doc/installation/ .
 
 	   
-	Enjoy with SMSlib and SMSserverGui!
+		 Enjoy with SMSlib and SMSserverGui!
 
-	
 	Any feedbacks contact me at ashikali.m@gmail.com
 
 
- Cheers ,
- Ashik
+  Cheers ,
+  Ashik
