@@ -1,24 +1,29 @@
 About SMSlib :
+-------------
 
       SMSLib is a Java library which allows you to send/receive SMS messages via a compatible GSM modem or 
       GSM phone . To know more about java smslib please visit www.smslib.org . 
 
-Aboue Ruby on Rails :
+About Ruby on Rails :
+---------------------
 
-      Ruby on Rails is a open source web developing kit . Works well on both Linux and windows OS . 
+      Ruby on Rails is a open source web developing kit , it  Works well on both Linux and windows OS . 
 
 About SMSlib SMSServer :
+------------------------
 
       SMSServer is a small application that you can use for sending and receiving SMS messages without writing your own code.
 
-      The new SMSServer is fully configurable and can be easily extended. It it based on two new concepts:
+      The new SMSServer is fully configurable and can be easily extended. It is based on two new concepts:
 
     		* SMSServer uses one or more Gateways to send and receive messages.
-    		* SMSServer uses one or more Interfaces for some sort of persistent storage, to which it saves received messages or send messages from.
+    		* SMSServer uses one or more Interfaces for some sort of persistent storage, to which it saves received messages 
+                  or send messages from.
 
       Please visit http://smslib.org/doc/smsserver/  to know about full funtionality of SMSServer . 
 
 Installing Java SMSlib and SMSServer in Linux : 
+-----------------------------------------------
 
        I choosed Debian and Ubuntu distributions of linux . 
         
@@ -31,16 +36,18 @@ Installing Java SMSlib and SMSServer in Linux :
          	
                sts:/usr/src#>./jdk-6u20-linux-i586.bin        
 
-	  4) Now we have installed java jdk . 
+	      Now we have installed lattest java version .
 
-          5) without installing jdk command, there may be a chance of Java is avaliable in our Linux operating system . It may not be update to date .
-             So we have to set the path variable for current jdk bin directory . Add this line into your .bashrc file . 
+          4) without installing jdk , there may be a chance of Java is avaliable in our Linux operating system . 
+	     It may not be up to date . So we have to set the path variable for current jdk bin directory . 
+
+	     Add below line into your .bashrc file . 
 
              export PATH="/usr/src/jdk1.6.0_20/bin:$PATH"
 
-          6) run the .bashrc file by typing in your console #>./.bashrc 
+          5) run the .bashrc file by typing in your console #>./.bashrc 
 
-          7) Check the java version by typing 
+          6) Check the java version by typing 
             
                 sts:~# echo $PATH
 		/usr/src/jdk1.6.0_20/bin:/usr/src/jdk1.6.0_20/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -55,7 +62,7 @@ Installing Java SMSlib and SMSServer in Linux :
                   by the time I used jdk 1.6.0_20 version . Please replace with current jdk for best results .
 
 
-	  8) Mysql installation and creating database for smslib .
+	  7) Mysql installation and creating database for smslib .
 
 		  -> Install mysql using aptiude command .
 			
@@ -72,12 +79,13 @@ Installing Java SMSlib and SMSServer in Linux :
 
 
 
-	 9) Now download the current smslib from http://smslib.org/download/files/smslib-v3.4.6.zip 
+	 8) Now download the current smslib from http://smslib.org/download/files/smslib-v3.4.6.zip 
             and unzip it in /usr/src/smslib_sources/smslib directory . 
 
                we have to install followings dependencies to make smslib work  .
               
                   -> Java Communications Library Installation :
+		    
 		          This library is used to interact with serial devices such as modem,mobile ..etc . Along with rxtx jar; we have to install the two .so files well . 
                           It is better for us to install it from synaptic,apt-get or aptitute with go for downloading rxtx library and compiling it .
 			  
@@ -169,7 +177,7 @@ Installing Java SMSlib and SMSServer in Linux :
 		      
 			sts:/usr/src/smslib_source/mysql-connector-java-5.1.12# cp mysql-connector-java-5.1.12-bin.jar  ../../jdk1.6.0_20/jre/lib/ext
                     
-	   10 ) Running out SMSserver :
+	   9 ) Running out SMSserver :
                     	 
 		     --> As of now , we have installed all dependencies for  SMSServer . Let us play with SMSServer right now .
 
@@ -254,7 +262,8 @@ Installing Java SMSlib and SMSServer in Linux :
 			Walkthrough SMSServer.conf file and replace device path with appropriate values .			      
 
 
-	11) SMSServer and Rails Integration : 
+	10) SMSServer and Rails Integration : 
+	    --------------------------------
 
                     Both Rails and SMSServer sync with Database SMSServer's tables . Rails acts as web interface between user 
                     and those tables( SMSServer ) . Please have look on http://www.smslib.org/doc/smsserver/interfaces/database/ 
@@ -262,10 +271,10 @@ Installing Java SMSlib and SMSServer in Linux :
 
 	    ->  Installing mysql and rails on Debian or ubuntu : 
 
-
 	       --> Ruby On Rails Installation :
 
 	              ---> Ruby Installation :
+
 				Install the following packages either using aptitude or apt-get or synaptic 
 
 				i) ruby1.8
@@ -313,7 +322,8 @@ Installing Java SMSlib and SMSServer in Linux :
         
 
       
-	SMSlib and Ruby on Rails Integration : 
+		SMSlib and Ruby on Rails Integration : 
+		-------------------------------------
      
     		  Here Ruby on Rails act as front end application for SMSServer's tables . In contrast to say , the SMSServer aggressively watches the tables 
     		  of SMSServer; To know more about SMSServer tables . Please visit  http://smslib.org/doc/smsserver/interfaces/database/   .  Here we are going to 
@@ -341,7 +351,8 @@ Installing Java SMSlib and SMSServer in Linux :
 			db1.retries=0
 			db1.update_outbound_on_statusreport=no
 
-            12)    Database configurations on SMSServerGUI( rails application ) and SMSServer 	        
+            11) Database configurations on SMSServerGUI( rails application ) and SMSServer:
+	        --------------------------------------------------------------------------
 			
 
 		   -> SMSServerGui Database Configurations :
@@ -397,18 +408,20 @@ Installing Java SMSlib and SMSServer in Linux :
 
 
 
-
-	     13) Running SMSserver :
+	     12) Running SMSserver :
+		 ------------------
 		
 		sts:/usr/src/smslib_source/smslib/dist/classes# java  -Dsmslib.serial.polling=true -Dgnu.io.rxtx.SerialPorts=/dev/ttyACM0 org/smslib/smsserver/SMSServer
+
 		SMSLib: A Java API library for sending and receiving SMS via a GSM modem or other supported gateways.
 		This software is distributed under the terms of the Apache v2.0 License.
 		Web Site: http://smslib.org
 		
 		SMSLib API version: 3.4.6
 		SMSServer version: 3.4.6
-		0      2010-05-17 17:54:45,483 [main] INFO  org.smslib.helper.Logger  - SMSLib: A Java API library for sending and receiving SMS via a GSM modem or other supported gateways.
-		This software is distributed under the terms of the Apache v2.0 License.
+		0      2010-05-17 17:54:45,483 [main] INFO  org.smslib.helper.Logger  - SMSLib: A Java API 
+		library for sending and receiving SMS via a GSM modem or other supported gateways. This software 
+		is distributed under the terms of the Apache v2.0 License.
 		Web Site: http://smslib.org
 		2      2010-05-17 17:54:45,485 [main] INFO  org.smslib.helper.Logger  - Version: 3.4.6
 		2      2010-05-17 17:54:45,485 [main] INFO  org.smslib.helper.Logger  - JRE Version: 1.6.0_20
@@ -426,12 +439,16 @@ Installing Java SMSlib and SMSServer in Linux :
 		=========================================
 		Native lib Version = RXTX-2.1-7
 		Java lib Version   = RXTX-2.1-7
-		8575   2010-05-17 17:54:54,058 [Thread-5] INFO  org.smslib.helper.Logger  - GTW: modem1: GSM: Registered to home network.
-		8981   2010-05-17 17:54:54,464 [Thread-5] INFO  org.smslib.helper.Logger  - GTW: modem1: MEM: Storage Locations Found: SM ME SM_P ME_P MT
+		8575   2010-05-17 17:54:54,058 [Thread-5] INFO  org.smslib.helper.Logger  - 
+		GTW: modem1: GSM: Registered to home network.
+		8981   2010-05-17 17:54:54,464 [Thread-5] INFO  org.smslib.helper.Logger  - GTW: modem1: MEM: 
+		Storage Locations Found: SM ME SM_P ME_P MT
 		9172   2010-05-17 17:54:54,655 [Thread-5] INFO  org.smslib.helper.Logger  - CNMI: No best match, returning: 1
 		9574   2010-05-17 17:54:55,057 [Thread-5] INFO  org.smslib.helper.Logger  - GTW: modem1: Gateway started.
-		10281  2010-05-17 17:54:55,764 [SMSServer - OutboundPollingThread] INFO  org.smslib.helper.Logger  - SMSServer: sending asynchronously... [0]
-		20288  2010-05-17 17:55:05,771 [SMSServer - OutboundPollingThread] INFO  org.smslib.helper.Logger  - SMSServer: sending asynchronously... [0]
+		10281  2010-05-17 17:54:55,764 [SMSServer - OutboundPollingThread] INFO  
+			org.smslib.helper.Logger  - SMSServer: sending asynchronously... [0]
+		20288  2010-05-17 17:55:05,771 [SMSServer - OutboundPollingThread] INFO  
+			org.smslib.helper.Logger  - SMSServer: sending asynchronously... [0]
 	
 
 		
@@ -441,17 +458,19 @@ Installing Java SMSlib and SMSServer in Linux :
 
 		-Dsmslib.serial.polling=true :
 
-			It is must for smslib to detect rxtx library . For more information have look on http://smslib.org/doc/smslib/parameters/
+			It is must for smslib to detect rxtx library . For more information have 
+			look on http://smslib.org/doc/smslib/parameters/
 
 		-Dgnu.io.rxtx.SerialPorts=/dev/ttyACM0 
 
-		       It is must for SMSlib to detect our device although we mentioned it in SMSServer.conf file . By default it may detects ttyS0 devices . 
+		       It is must for SMSlib to detect our device although we mentioned it in SMSServer.conf file . 
+		       By default it may detects ttyS0 devices . 
 
 		 If you have any problem to run SMSServer then visit www.smslib.org for more documenation than this .
                       
 
-
-         14)  Running SMSServerGui :
+         13)  Running SMSServerGui :
+	      ---------------------
 
 	          sts:/var/www/SMSSserverGui# ruby script/server 
 	        	=> Booting WEBrick
@@ -467,26 +486,16 @@ Installing Java SMSlib and SMSServer in Linux :
 
 
 	 For windows OS:
-		     To installing smslib and SMSServerGui in windows almost same as linux . You can find more information to install smslib on windows from 
-                     http://smslib.org/doc/installation/ .
+	 ---------------
+        	 To installing smslib and SMSServerGui in windows almost same as linux . You can find more information 
+		 to install smslib on windows from  http://smslib.org/doc/installation/ .
 
 	   
 	Enjoy with SMSlib and SMSserverGui!
 
- 
-Cheers ,
- Ashik
-
-
-
-
-
-	    
-
-
-	        
-
 	
+	Any feedbacks contact me at ashikali.m@gmail.com
 
 
-     
+ Cheers ,
+ Ashik
