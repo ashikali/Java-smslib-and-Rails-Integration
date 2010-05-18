@@ -33,11 +33,11 @@ OS Compatibility:
 
 Java jdk Installation:
         
-i) Create the smslib_source directory in /usr/src . 
-
-ii) Download  jdk-6u20-linux-i586.bin from http://java.sun.com/javase/downloads/widget/jdk6.jsp 
-
-iv) Run the jdk-6u20-linux-i586.bin file in your console by typing 
+	i) Create the smslib_source directory in /usr/src . 
+	
+	ii) Download  jdk-6u20-linux-i586.bin from http://java.sun.com/javase/downloads/widget/jdk6.jsp 
+	
+	iv) Run the jdk-6u20-linux-i586.bin file in your console by typing 
 
        sts:/usr/src#>./jdk-6u20-linux-i586.bin        
 	
@@ -500,8 +500,10 @@ For windows OS:
         	 To installing smslib and SMSServerGui in windows almost same as linux . You can find more information 
 		 to install smslib on windows from  http://smslib.org/doc/installation/ .
 
-	   
-		 Enjoy with SMSlib and SMSserverGui!
+From Author:
+
+	  
+	Enjoy with SMSlib and SMSserverGui!
 
 	Any feedbacks contact me at ashikali.m@gmail.com
 
