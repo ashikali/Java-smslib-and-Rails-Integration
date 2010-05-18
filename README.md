@@ -296,36 +296,38 @@ SMSServer and Rails Integration :
 
 	       --> Ruby On Rails Installation :
 
-	              ---> Ruby Installation :
+	          i) Ruby Installation :
 
-				Install the following packages either using aptitude or apt-get or synaptic 
+			Install the following packages either using aptitude or apt-get or synaptic 
 
-				i) ruby1.8
-			       ii) ruby1.8-dev
-			      iii) libopenssl-ruby
-			       iv) libmysql-ruby1.8
+			i) ruby1.8
+		       ii) ruby1.8-dev
+		      iii) libopenssl-ruby
+		       iv) libmysql-ruby1.8
 
-	        	Note :
-			   Install either ruby1.8,ruby1.8-dev or ruby1.9,ruby1.9-dev don't install both . 
-                       	   After installing above packages . Create soft link for ruby1.X as ruby in /usr/bin directory .
+	               Note :
+			 Install either ruby1.8,ruby1.8-dev or ruby1.9,ruby1.9-dev don't install both . 
+                       	 After installing above packages . Create soft link for ruby1.X as ruby in /usr/bin directory .
 
-		      ---> gem Installation :
+		  ii) gem Installation :
 
-                          i ) Download current version of rubygems from http://rubyforge.org/frs/?group_id=126 and save it in /usr/src . 
-			      I choosed 1.3.5
-			  ii) Decompress it and go into the directory .
+                        i ) Download current version of rubygems from http://rubyforge.org/frs/?group_id=126 and save it in /usr/src . 
+			    I choosed 1.3.5
+			ii) Decompress it and go into the directory .
 
-				sts:/usr/src/rubygems/rubygems-1.3.5# ruby setup.rb 
+	  	 		sts:/usr/src/rubygems/rubygems-1.3.5# ruby setup.rb 
 
-			 iii) Now gem1.X has been installed successfully . Create soft link for gem1.X as gem  in /usr/bin directort .
+		       iii) Now gem1.X has been installed successfully . Create soft link for gem1.X as gem  in /usr/bin directort .
 
-		      ---> Rails Installation 
+		 iii) Rails Installation 
                        
 			  sts:~# gem install rails --include-dependencies
 			
-		      ---> SMSServer Gui Installation :
+		 iv)  SMSServer Gui Installation :
 
-			  Go into the Java-smslib-and-Rails-Integration Directory now . And copy SMSSserverGui into /var/www directory .
+			  Go into the Java-smslib-and-Rails-Integration Directory now . And copy SMSSserverGui.tgz into /var/www directory .
+			   
+			  sts:/var/www/SMSSserverGui# tar -xvzf SMSSserverGui.tgz
 			  sts:/var/www/SMSSserverGui# rake gems:install
 			  sts:/var/www/SMSSserverGui# gem list
 
@@ -348,14 +350,14 @@ SMSServer and Rails Integration :
       
 Contradictions and patches to integrate SMSlib with Ruby on Rails  : 
      
-	  Here Ruby on Rails act as front end application for SMSServer's tables . In contrast to say , the SMSServer aggressively watches the tables 
-	  of SMSServer; To know more about SMSServer tables . Please visit  http://smslib.org/doc/smsserver/interfaces/database/   .  Here we are going to 
-	  feed the SMSServer via Ruby on Rails application .
+	  Here Ruby on Rails act as front end application for SMSServer's tables. In contrast to say , the SMSServer aggressively 
+	  watches the tables of SMSServer; To know more about SMSServer tables. Please visit  http://smslib.org/doc/smsserver/interfaces/database/.
+	  Here we are going to feed the SMSServer via Ruby on Rails application .
 
 	  To integrate SMSServer Tables with Rails application , the tables should be in under some rules and regulations .
 
-	  What are those Rules and Regulations how to noramalize this: 
-	  -----------------------------------------------------------
+	  What are those Rules and Regulations how to Balance this
+	  --------------------------------------------------------
 	
   	      i) Table name should be in plural form .  
 
@@ -381,9 +383,9 @@ Contradictions and patches to integrate SMSlib with Ruby on Rails  :
 
 		  sts:/var/www/SMSSserverGui# cp config/SMSServer.conf /usr/src/smslib_source/smslib/dist/classes/
 
-         	  Note :
-
-                      Have look on this SMSServer.conf file and configure your modem here  . By default it may have /dev/ttyACM0 as device path .
+         	 Note :
+                     Have look on this SMSServer.conf file and configure your modem here  . By default it 
+		     may have /dev/ttyACM0 as device path .
 
 	     
    	      ii) Table Column names should not be same as its object predefined methods .
@@ -432,7 +434,6 @@ Create SMSServer Tables using Rails rake
 		   -> 0.0010s
 
 	   Now all the tables have been created in smslib database . Cross check the same .
-
 
 
 Running SMSserver :
@@ -491,8 +492,6 @@ Running SMSserver :
                       
 
 Running SMSServerGui :
-
-
 	          sts:/var/www/SMSSserverGui# ruby script/server 
 	        	=> Booting WEBrick
 			=> Rails 2.3.5 application starting on http://0.0.0.0:3000
@@ -516,5 +515,5 @@ For windows OS:
 	Any feedbacks contact me at ashikali.m@gmail.com
 
 
-  Cheers ,
-  Ashik
+  	Cheers ,
+  	Ashik
