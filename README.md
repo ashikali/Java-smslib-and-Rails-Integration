@@ -1,16 +1,13 @@
 About SMSlib :
--------------
 
       SMSLib is a Java library which allows you to send/receive SMS messages via a compatible GSM modem or 
       GSM phone . To know more about java smslib please visit www.smslib.org . 
 
 About Ruby on Rails :
----------------------
 
       Ruby on Rails is a open source web developing kit , it  Works well on both Linux and windows OS . 
 
 About SMSlib SMSServer :
-------------------------
 
       SMSServer is a small application that you can use for sending and receiving SMS messages without writing your own code.
 
@@ -23,13 +20,11 @@ About SMSlib SMSServer :
       Please visit http://smslib.org/doc/smsserver/  to know about full funtionality of SMSServer . 
 
 About SMSServerGui-2.0 :
-------------------------
 
       It is a Ruby on Rails based web front for SMSServer . It acts as interface between users and SMSserver . Users 
       can load , unload sms . Also they can monitor SMSServer from this .
 
 OS Compatibility:
------------------
 
       Normally all the java and Ruby on Rails prorams work well on both windows and linux operating system . This frontend has 
       been throughly tested on both windows and linux .
@@ -37,7 +32,6 @@ OS Compatibility:
       For windows I choosed XP ;  For linux I choosed Ubuntu and Debian distributions 
 
 Java jdk Installation:
-------------------------------
         
 i) Create the smslib_source directory in /usr/src . 
 
@@ -47,7 +41,7 @@ iv) Run the jdk-6u20-linux-i586.bin file in your console by typing
 
        sts:/usr/src#>./jdk-6u20-linux-i586.bin        
 
-     Now we have installed lattest java version .
+    Now we have installed lattest java version .
 	
    Note :
 	Depending upon your OS , use appropriate package name . 
@@ -80,7 +74,6 @@ vii) Check the java version by typing
          By the time I used jdk 1.6.0_20 version . Please replace with current jdk for best results .
 
 Mysql Database Installation :
------------------------------
 
     sts:~#aptitude install mysql-server
      
@@ -95,7 +88,6 @@ Mysql Database Installation :
 
 
 SMSlib SMSServer Installation :
--------------------------------
 
     i) Download the current smslib from http://smslib.org/download/files/smslib-v3.4.6.zip 
        and unzip it in /usr/src/smslib_sources/smslib directory . 
@@ -103,10 +95,10 @@ SMSlib SMSServer Installation :
       we have to install followings dependencies to make smslib work  .
      
    ii) Java Communications Library Installation :
-       -----------------------------------------
            
-        This library is used to interact with serial devices such as modem,mobile ..etc . Along with rxtx jar; we have to install the two .so files well . 
-        It is better for us to install it from synaptic,apt-get or aptitute with go for downloading rxtx library and compiling it .
+        This library is used to interact with serial devices such as modem,mobile ..etc . Along with rxtx jar; we have to 
+	install the two .so files well . It is better for us to install it from synaptic,apt-get or aptitute 
+	without go for downloading rxtx library and compiling it .
        	  
        	  sts:/usr/src# aptitude install librxtx-java
 
