@@ -40,8 +40,6 @@ ii) Download  jdk-6u20-linux-i586.bin from http://java.sun.com/javase/downloads/
 iv) Run the jdk-6u20-linux-i586.bin file in your console by typing 
 
        sts:/usr/src#>./jdk-6u20-linux-i586.bin        
-
-    Now we have installed lattest java version .
 	
    Note :
 	Depending upon your OS , use appropriate package name . 
@@ -96,9 +94,9 @@ SMSlib SMSServer Installation :
      
    ii) Java Communications Library Installation :
            
-        This library is used to interact with serial devices such as modem,mobile ..etc . Along with rxtx jar; we have to 
-	install the two .so files well . It is better for us to install it from synaptic,apt-get or aptitute 
-	without go for downloading rxtx library and compiling it .
+        This library is used to interact with serial devices such as modem,mobile ..etc . Along with rxtx jar; 
+	we have to install the two .so files well . It is better for us to install it from synaptic,apt-get 
+	or aptitute without go for downloading rxtx library and compiling it .
        	  
        	  sts:/usr/src# aptitude install librxtx-java
 
@@ -121,8 +119,8 @@ SMSlib SMSServer Installation :
        	   lrwxrwxrwx 1 root root    24 2010-05-15 17:44 librxtxParallel.so -> librxtxParallel-2.1-7.so
        	   lrwxrwxrwx 1 root root    19 2010-05-15 17:44 librxtxI2C.so -> librxtxI2C-2.1-7.so
 
-         java native c libraries are installed succfully in /usr/lib directort . Next thing is we have to findout RXTXcomm.jar . By default it would installed 
-         in  /usr/share/java directory .
+         java native c libraries are installed succfully in /usr/lib directort . Next thing is we have to 
+	 findout RXTXcomm.jar. By default it would be installed  in  /usr/share/java directory .
 
           -->  Now copy RXTXcomm.jar file into /usr/src/jdk1.6.0_20/jre/lib/ext .
        	
@@ -130,11 +128,12 @@ SMSlib SMSServer Installation :
 
 
        Note :
-              if you are unable to findout /usr/share/java or/and /usr/lib/jvm . Then you may want to install default java package from 
-              OS repository .
+              if you are unable to findout /usr/share/java or/and /usr/lib/jvm . Then you may want to 
+	      install default java package from OS repository .
 
-              we need to install default java; then only we can get precompiled librxtx-java library . Just we are cheating here .  
-	      After installing this default-java be ensure that you are not set PATH variable value to this java binary . 
+              we need to install default java; then only we can get precompiled librxtx-java library . 
+	      Just we are cheating here . After installing this default-java be ensure that you are not 
+	      set PATH variable value to this java binary . 
 
               After installation please check java version well . Because this java version not compatible with current smslib .
 
