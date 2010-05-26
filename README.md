@@ -32,6 +32,7 @@ OS Compatibility:
       For windows I choosed XP ;  For linux I choosed Ubuntu and Debian distributions 
 
 Java jdk Installation:
+---------------------
         
 	i) Create the smslib_source directory in /usr/src . 
 	
@@ -41,8 +42,8 @@ Java jdk Installation:
 
        sts:/usr/src#>./jdk-6u20-linux-i586.bin        
 	
-   Note :
-	Depending upon your OS , use appropriate package name . 
+	Note:
+	Depending upon your OS , use appropriate JDK package name . 
 	My OS Details are,
 	sts:~# uname -a
 	Linux sts 2.6.26-2-686 #1 SMP Wed Aug 19 06:06:52 UTC 2009 i686 GNU/Linux
@@ -71,7 +72,8 @@ vii) Check the java version by typing
      Note : 
          By the time I used jdk 1.6.0_20 version . Please replace with current jdk for best results .
 
-Mysql Database Installation :
+Mysql Database Installation:
+----------------------------
 
     sts:~#aptitude install mysql-server
      
@@ -86,7 +88,8 @@ Mysql Database Installation :
 
 
 SMSlib SMSServer Installation :
-
+------------------------------
+      
     i) Download the current smslib from http://smslib.org/download/files/smslib-v3.4.6.zip 
        and unzip it in /usr/src/smslib_sources/smslib directory . 
 
@@ -192,6 +195,7 @@ SMSlib SMSServer Installation :
            
 Compile and Run SMSserver :
 --------------------------
+
                    	 
      i) As of now , we have installed all dependencies for SMSServer . Let us play with SMSServer right now .
 
@@ -276,14 +280,14 @@ Compile and Run SMSserver :
 	Walkthrough SMSServer.conf file and replace device path with appropriate values .			      
 
 
-SMSServer and Rails Integration : 
+SMSServer and Rails Integration: 
+--------------------------------
 
 	 Both Rails and SMSServer sync with Database SMSServer's tables . Rails acts as web interface between user 
     	 and those tables( SMSServer ) . Please have look on http://www.smslib.org/doc/smsserver/interfaces/database/ 
        	 for more details .
 
 	    Installing mysql and rails on Debian or ubuntu : 
-	    -----------------------------------------------
 
 	       --> Ruby On Rails Installation :
 
@@ -398,35 +402,73 @@ Contradictions and patches to integrate SMSlib with Ruby on Rails  :
 		Now the time had come to run both SMSServerGui and SMSserver as well .
 	 
 
-Create SMSServer Tables using Rails rake
+Create SMSServer and SMSServerGui Tables :
+----------------------------------------
+
+	SMSServerGui Database Configurations :
+
+	        --> Go to /var/www/SMSServerGui/db
+	        --> configure database in database.yml 
+		--> sts:/var/www/SMSSserverGui/db# mysql -D smslib -u smslib  -p
+			Enter password: 
+			Reading table information for completion of table and column names
+			You can turn off this feature to get a quicker startup with -A
 			
-
-   i) SMSServerGui Database Configurations :
-
-        --> Go to /var/www/SMSServerGui
-        --> configure database in database.yml 
-        --> sts:/var/www/SMSSserverGui# rake db:schema:load
-		(in /var/www/SMSSserverGui)
-		-- create_table("outgoing_sms_content_groups", {:force=>true})
-		   -> 0.0463s
-		-- create_table("outgoing_sms_number_groups", {:force=>true})
-		   -> 0.0032s
-		-- create_table("smsserver_calls", {:force=>true})
-		   -> 0.0290s
-		-- create_table("smsserver_in_messages", {:force=>true})
-		   -> 0.0035s
-		-- create_table("smsserver_out_messages", {:force=>true})
-		   -> 0.0044s
-		-- create_table("users", {:force=>true})
-		   -> 0.0025s
-		-- initialize_schema_migrations_table()
-		   -> 0.0175s
-		-- assume_migrated_upto_version(0)
-		   -> 0.0010s
-
+			Welcome to the MySQL monitor.  Commands end with ; or \g.
+			Your MySQL connection id is 197
+			Server version: 5.0.51a-24+lenny3 (Debian)
+			
+			Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+			
+			mysql> 
+			mysql> 
+			mysql> \. smslib.sql
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.01 sec)
+			
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.00 sec)
+			
+			Query OK, 0 rows affected (0.01 sec)
+			
+			Query OK, 1 row affected (0.00 sec)
+			
+			mysql> show tables ;
+			+-----------------------------+
+			| Tables_in_smslib            |
+			+-----------------------------+
+			| outgoing_sms_content_groups | 
+			| outgoing_sms_number_groups  | 
+			| schema_migrations           | 
+			| smsserver_calls             | 
+			| smsserver_in_messages       | 
+			| smsserver_out_messages      | 
+			| users                       | 
+			+-----------------------------+
+			7 rows in set (0.00 sec)
+			
+			mysql> 
+			
+			
 	   Now all the tables have been created in smslib database . Cross check the same .
-
-
+	
+	
 Running SMSserver :
 		
 		sts:/usr/src/smslib_source/smslib/dist/classes# java  -Dsmslib.serial.polling=true -Dgnu.io.rxtx.SerialPorts=/dev/ttyACM0 org/smslib/smsserver/SMSServer
