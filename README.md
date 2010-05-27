@@ -544,7 +544,7 @@ For windows OS:
 
 From Author:
 
-	  
+
 	Enjoy with SMSlib and SMSserverGui!
 
 	Any feedbacks contact me at ashikali.m@gmail.com
