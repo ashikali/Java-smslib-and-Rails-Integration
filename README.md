@@ -535,11 +535,11 @@ Running SMSServerGui :
 			[2010-05-17 18:00:20] INFO  WEBrick::HTTPServer#start: pid=9153 port=3000
 
 
-	         Now go to firefox and IE type the URL mentioned above . Give username and password as smslib 
+	         Now go to firefox or IE then type the URL mentioned above . Give username and password as smslib 
 
 
 For windows OS:
-        	 To installing smslib and SMSServerGui in windows almost same as linux . You can find more information 
+        	 To install smslib and SMSServerGui in windows almost same as linux . You can find more information 
 		 to install smslib on windows from  http://smslib.org/doc/installation/ .
 
 From Author:
