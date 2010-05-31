@@ -1,0 +1,14 @@
+<br/>
+<div class="login-form">
+  <%=form_tag  %>
+    <fieldset>
+      <legend>Please hit your criteria here for <%="<font color='green'>#{@form_name}</font>"%></legend> 
+      <table><td>From Date</td><td><%=calendar_date_select_tag "sdate",Time.now.beginning_of_day,:time => true , :size => 30 %></td><td>To Date</td><td><%=calendar_date_select_tag "edate",Time.now.end_of_day,:time => true,:size => 30%></td><td><%=submit_tag 'Bring Details'%></table>
+        </fieldset>  
+<h3>About this form</h3>
+1. This form is for getting log information about the messages which were/was processed by SMS System . In this form there are two start date time field and end date time field where you have to choose your criteria . <br/>
+2. Near by those button there are two small boxes are available where you can find popup window for choosing your start date time and end date time criteria .<br/>
+<h3>Cases And Results</h3>
+<b><u>Case 1</u></b>
+If you leave criteria empty then it brings you all information about messages ; it may take a while depending upon your usage.Please use your criteria option by selecting From Date and To Date fields to avoid unnecessary working time.<br/><br/>
+</div>

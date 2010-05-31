@@ -1,0 +1,23 @@
+<table>
+  <%serial_no=0%>
+  <tr><th>Select</th><th>UniqueueID</th><th>From Number</th><th>Received At</th></tr> 
+  <%@received_sms.each{ |row| %>
+    <tr><td><%=radio_button(:incoming,:id,row.id,:onClick => remote_function( :update => 'detailedInfo' , 
+                                                                         :url => { :action =>'get_record_by_id' }, 
+                                                                         :with => 'Form.Element.serialize(this)', 
+                                                                         :before => "$('ajaxload').style.display='';",
+                                                                         :success => "$('ajaxload').style.display='none'",
+                                                                         :failue => "$('ajaxload').style.display='none'" ))%></td>
+                                                                       <td><%=row.id%></td><td><%=row.originator%></td><td><%=row.receive_date%></td><tr>
+<%}%>
+</table> 
+
+<center><%=will_paginate @received_sms, :params => { :sdate => params[ :sdate ],:edate => params[ :edate ]  } %></center>
+<%=link_to "back to Search Form" %>
+<hr>
+<div id='detailedInfo'>
+      
+</div>
+
+
+

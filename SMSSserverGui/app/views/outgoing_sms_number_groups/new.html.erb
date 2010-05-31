@@ -1,0 +1,19 @@
+<h1>New outgoing sms number group</h1>
+
+<% form_for(@outgoing_sms_number_group) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :group_name %><br />
+    <%= f.text_field :group_name %>
+  </p>
+  <p>
+    <%= f.label :phone_numbers %><br />
+    <%= f.text_area :phone_numbers , :size => "60x10" %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', outgoing_sms_number_groups_path %>

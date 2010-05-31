@@ -1,0 +1,20 @@
+<h1>Editing outgoing_sms_number_group</h1>
+
+<% form_for(@outgoing_sms_number_group) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :group_name %><br />
+    <%= f.text_field :group_name %>
+  </p>
+  <p>
+    <%= f.label :phone_numbers %><br />
+    <%= f.text_area :phone_numbers %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @outgoing_sms_number_group %> |
+<%= link_to 'Back', outgoing_sms_number_groups_path %>

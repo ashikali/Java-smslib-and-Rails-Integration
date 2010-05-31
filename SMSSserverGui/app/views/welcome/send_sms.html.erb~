@@ -1,0 +1,52 @@
+<h1>New SMS Creation</h1>
+<%=error_messages_for "sms_out_obj" %>
+  <% form_tag  :action => "send_sms" do%>
+
+<%if @numbers %>
+  <p> 
+<%= select_tag "number_group_id",  options_for_select( @numbers ),
+  { :onchange =>  
+    remote_function( :update => 'send_sms_recipient' ,
+         :url => { :action => 'get_number_group_value' }, 
+         :with => 'Form.Element.serialize(this)' , 
+         :before => "$('ajaxload').style.display='';",
+         :success => "$('ajaxload').style.display='none'",
+         :failue => "$('ajaxload').style.display='none'"  
+                  ) ,    :prompt => "Select Value"         } %> 
+    </p>
+  <%end%>
+    <p>
+     <%= label '',"Type Numbers to send SMS" %><br />
+     <%= text_area :send_sms ,:recipient,:size => "60x5" %>
+  </p>
+  <%if @contents%>
+  <p>
+    <%= select_tag "content_group_id",  options_for_select( @contents),
+ { :onchange => 
+   remote_function( :update => 'send_sms_text' ,
+         :url => { :action => 'get_message_group_value' }, 
+         :with => 'Form.Element.serialize(this)',
+         :before => "$('ajaxload').style.display='';",
+         :success => "$('ajaxload').style.display='none'",
+         :failue => "$('ajaxload').style.display='none'"
+                  ) ,    :prompt => "Select Value"  } %>
+  </p>
+  <%end%>
+
+  <p>
+    <%= label '',"Type SMS Content"  %><br />
+    <%= text_area :send_sms,:text,:size => "60x5" %> 
+  </p>
+
+  <table><tr><td><%= label '',"sms type" %></td>
+      <td> <%= select_tag "sms_type", options_for_select( [ [ 'Normal SMS', 0 ],[ 'Flash SMS', 1 ] ] ) %></td><tr>
+  <tr><td>  <%= label '',"Scheduled At" %></td>
+    <td> <%= select_tag "scheduled_on", options_for_select( [ [ 'All Time(00:00-23:59)', 1 ],[ 'Working Hours(09:00-22:00)',0 ],['Office Time(09:00-19:00)',-1 ] ] ) %></td><tr/>
+    </table>
+
+
+    <br/>
+<p>
+<%=submit_tag 'Send SMS'%>
+</p>
+<% end %>

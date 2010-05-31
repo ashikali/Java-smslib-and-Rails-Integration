@@ -1,0 +1,32 @@
+<h1>Listing Outgoing SMS Number Groups</h1> 
+<hr>
+<%@outgoing_sms_number_groups.each do |outgoing_sms_number_group|%>
+  <div id="<%=outgoing_sms_number_group.id %>" class='div-display'>
+<p>
+  <b>Group name:</b>
+  <%=h outgoing_sms_number_group.group_name %>
+</p>
+
+<p>
+  <b>Phone numbers:</b>
+  <%=h wrap outgoing_sms_number_group.phone_numbers,30,',' %>
+</p>
+<p>
+  <b>Created By:</b>
+   <%= outgoing_sms_number_group.created_at.localtime %> 
+  </p> 
+<p>
+<%= link_to 'Edit', edit_outgoing_sms_number_group_path( outgoing_sms_number_group ) %> <%= link_to 'Destroy', outgoing_sms_number_group, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+  </div>
+<% end %>
+<br/>
+<div class="digg_pagination">
+  <center><%= will_paginate @outgoing_sms_number_groups, :container => false %></center>
+</div>
+<br/>
+<%= link_to 'New Outgoing sms Number Group', new_outgoing_sms_number_group_path %>
+<br/>
+<h2>About This</h2>
+This page lists all the number groups which are created by you . Feature of this option is you can store the particular numbers as a group. So you can select those group while sending sms .
+<br/>

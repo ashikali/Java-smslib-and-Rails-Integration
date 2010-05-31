@@ -1,0 +1,7 @@
+<table>
+  <tr><th>UniqueueID</th><th>From Number</th><th>Received At</th><th>Received Device Name</th></tr> 
+  <%@missed_calls.each{ |row| %>
+    <tr><td><%=row.id%></td><td><%=row.caller_id%></td><td><%=row.call_date%></td><td><%=row.gateway_id%><tr>
+<%}%>
+</table> 
+<center><%=will_paginate @missed_calls, :params => { :sdate => params[ :sdate ],:edate => params[ :edate ]  } %></center>
