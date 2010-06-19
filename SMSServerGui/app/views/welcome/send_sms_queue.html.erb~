@@ -1,0 +1,33 @@
+<h1>Listing Queued SMS</h1>
+<br/>
+<%@queued_sms.each{ |row| %>
+<div id="<%=row.id%>" class="div-display">
+  <p>
+  <b>To number:</b>
+  <%=h row.recipient %>
+  </p>
+
+  <p>
+  <b>Content:</b>
+  <%=h row.text %>
+  </p>
+
+  <p>
+  <b>Created On:</b>
+  <%=h row.create_date %>
+  </p>
+
+  <%= link_to "Destroy", "/welcome/send_sms_queue_destroy/?id=#{row.id}"  ,:confirm => "Are you sure?" %>
+
+
+</div>
+<%}%>
+
+<br />
+<%= link_to 'New SMS', :action => :send_sms %>
+<br/>
+<br/>
+<div class="digg_pagination">
+  <center><%= will_paginate @queued_sms, :container => false %></center>
+</div>
+

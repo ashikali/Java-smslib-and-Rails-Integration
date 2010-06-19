@@ -1,0 +1,18 @@
+<p>
+  <b>Group name:</b>
+  <%=h @outgoing_sms_number_group.group_name %>
+</p>
+
+<p>
+  <b>Phone numbers:</b>
+  <%=h @outgoing_sms_number_group.phone_numbers %>
+</p>
+<p>
+  <b>Created at:</b>
+  <%=h @outgoing_sms_number_group.created_at %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_outgoing_sms_number_group_path(@outgoing_sms_number_group) %> |
+<%= link_to 'Back', outgoing_sms_number_groups_path %>

@@ -1,0 +1,14 @@
+<h1><%="Listing UnRead Missed calls" if @calls.length > 0  %></h1> 
+<% @calls.each do |call| %>
+  <div  class='div-display'>
+    <br>
+    <p>
+    <%=call.caller_id %>
+    </p>
+    <p> At<I> <%= call.call_date %> </I> Received From : <%=call.gateway_id %></p>
+  </div>
+<% end %>
+<br />
+<div class="digg_pagination">
+  <center><%= will_paginate @calls, :container => false %></center>
+</div>

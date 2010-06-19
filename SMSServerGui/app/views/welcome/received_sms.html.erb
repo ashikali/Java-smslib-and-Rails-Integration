@@ -1,0 +1,16 @@
+<h1><%="Listing UnRead SMS" if @received_sms.length > 0 %></h1> 
+<% @received_sms.each do |received_sms| %>
+  <div  class='div-display'>
+    <br>
+    <p>
+    <%=received_sms.text  %>
+    </p>
+    <p> Received From : <I><%=h received_sms.originator %></I> at <I> <%= received_sms.receive_date %> </I> Received From : <%=received_sms.gateway_id %></p>
+  </div>
+<% end %>
+<br />
+<div class="digg_pagination">
+  <center><%= will_paginate @received_sms, :container => false %></center>
+</div>
+
+

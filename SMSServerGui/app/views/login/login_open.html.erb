@@ -1,0 +1,57 @@
+<div id='overview'>
+  <h2>About SMSServerGui-2.0</h2>
+  It is a Ruby on Rails based web front for SMSServer.It acts as interface between users and SMSserver. 
+  Users can load , unload sms . Also they can monitor SMSServer from this. 
+  <br>
+  <br>
+</div>
+<div>
+ 
+<div id='leftcol' align='left'>
+<h2>Attention</h2>
+This software comes with ABSOLUTELY NO WARRANTY; 
+This is free software, you are welcome to redistribute it.
+<br>
+<br>
+<br>
+</div>
+     <div id='rightcol'> <h2>Log in </h2>
+<div id="login-form">
+  <% form_tag do %>
+    <table>
+
+      <tbody>
+        <tr>
+          <td align="right"><label for="username">Login:</label></td>
+          <td align="left"><input type="text" tabindex="1" name="user[user_name]" id="username"></td>
+        </tr>
+        <tr>
+          <td align="right"><label for="password">Password:</label></td>
+          <td align="left"><input type="password" tabindex="10" name="user[password]" id="password"></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td align="left">
+
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+
+          </td>
+          <td align="right">
+            <input type="submit" tabindex="-2" value="Login" name="login">
+          </td>
+        </tr>
+    </tbody>
+  </table>
+<% end %>
+</div>
+
+</div>
+<div style="clear: both;"></div>
+</div>
+<script type="text/javascript">
+  Form.Element.focus('username');
+</script>

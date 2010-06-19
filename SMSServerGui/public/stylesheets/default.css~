@@ -1,0 +1,303 @@
+
+
+
+body {
+color:#000000;
+background: #EAEBD8;
+font-family:Helvetica,Arial,sans-serif;
+font-size:87.5%;
+line-height:1.5em;
+}
+
+img { display: block}
+a img { border: 0}
+.clear {clear: both; overflow: hidden;height: 0px}
+.block {display: block}
+/*
+body
+{	margin: 0;
+  padding: 0;
+  background: #EAEBD8;
+  font-family:  Helvetica, sans-serif;
+  font-size: 76%;
+  }
+    */
+
+#all
+{	width: 750px; 
+	margin: 10px auto;}
+
+	#top
+	{	background: #3056A1 
+		border-bottom: 1px solid #FFF}
+
+	#mytopmenu
+	{	height: 28px;
+		background-color: #3056A1;
+        }
+
+		#topmenu ul
+		{	margin: 0;
+			padding: 0}
+		
+		#topmenu ul li
+		{	margin: 0;
+			padding: 8px 25px 0 25px;
+			float: left;
+			list-style: none;
+			color: #FFF;
+			font: bold 11px trebuchet ms, sans-serif}
+
+		#topmenu ul li a
+		{	color: #FFF}
+
+		#topmenu ul li a:hover
+		{	color: #3CFFF8}
+
+	#center
+	{	border: 0px solid #C1C1C1;
+		border-top-width: 0px;
+                background:white;
+                padding: 8px 25px 0 25px;
+         }
+
+
+		#leftcol
+		{	float: left;
+			width: 40%;
+			padding: 5px 15px;
+                }
+
+			#path
+			{	background: #EAEBD8;
+				padding: 3px 12px;
+				margin: 0 0 15px -10px;
+				font: 0.7em trebuchet ms, georgia, tahoma, sans-serif;}
+
+				#path a
+				{	color: #639DEB}
+
+				#path a:hover
+				{	color: #09008E}
+
+					
+		#rightcol
+		{	float: right;	
+			width: 55%;
+                }
+
+                .list1{
+                  background-color:#FFFFFF;
+                  color:#660000;
+                  font-family:Verdana,Arial,Helvetica,sans-serif;
+                  font-size:12px;
+                  font-style:normal;
+                  font-variant:normal;
+                  font-weight:normal;
+                  list-style-image:url("bullet.gif");
+                  list-style-position:outside;
+                  margin:0;
+                  padding:0;
+                  text-decoration:none;
+                  text-indent:5px;
+                  text-transform:none;
+}
+			.menuhdr
+			{	background: #EAEBD8; 
+				padding: 2px 10px;
+				font: bold 0.8em trebuchet ms, georgia, tahoma, sans-serif}
+
+			#wt
+			{	font: 0.8em trebuchet ms, georgia, tahoma, sans-serif;
+				margin: 0 0 15px 0;
+				padding: 10px;}
+
+				#wt div
+				{	font-weight: bold;
+					margin-bottom: 5px}
+
+				#wt p
+				{	margin: 0 0 15px 0;
+					color: #777;
+					padding: 0;
+					font-size: 11px}
+
+		#bottom
+		{	height: 28px;
+			color: #FFF;
+			padding: 12px 0 0 16px;
+			font: 11px trebuchet ms, georgia, tahoma, sans-serif;
+			background: #0A0099 ; 
+			border: 1px solid #C1C1C1;
+			border-top-width: 0px;}
+
+/*************************************************/
+h1
+{	margin: 0;
+	padding: 3 0 10px 0;
+	font: 1.5em  arial, sans-serif;
+	color: #060054}
+
+h2
+{	margin: 0;
+	padding: 10px 0 10px 0;
+	font: 1.2em trebuchet ms, georgia, arial, sans-serif;
+	color: #060054}
+
+h3
+{	margin: 0;
+	padding: 10px 0 10px 0;
+	font: 1.1em trebuchet ms, georgia, arial, sans-serif;
+	color: #060054}
+h4
+{	margin: 0;
+	padding: 10px 0 10px 0;
+	font: 0.9em trebuchet ms, georgia, arial, sans-serif;
+	color: #060054}
+
+
+p
+{	margin: 0;
+	padding: 0 0 10px 0;
+	font: 1.1em trebuchet ms, georgia, tahoma, sans-serif;
+	line-height: 150%;
+	color: #353D3C}
+
+	.handler
+	{	color: #659912}
+
+
+div.date
+{	font: 0.8em trebuchet ms, georgia, tahoma, sans-serif;
+	color: #939393}
+
+div.devider
+{	border-top: 1px solid #DFE0C8;
+	margin-bottom: 45px}
+
+div.sample
+{	font: 0.8em trebuchet ms, georgia, tahoma, sans-serif;
+	background: #C8D1FF;
+	border: 1px solid #607AFF;
+	overflow: hidden;
+	width: 99%;
+	padding: 0px}
+
+	div.sample span
+	{	display: block;
+		padding: 10px}
+
+div.htmlcode, div.csscode, div.jscode
+{	height: 200px;
+	width: 99%;
+	overflow: scroll}
+
+	div.htmlcode pre, div.csscode pre, div.jscode pre
+	{	margin: 0;
+		padding: 0;
+		font: 11px lucida console, courier new;
+		padding: 10px}
+
+	div.htmlcode
+	{	background: #D5EFF7;
+		border: 1px solid #59C4E2}
+
+	div.csscode
+	{	background: #F1F7D5;
+		border: 1px solid #C9E259}
+
+	div.jscode
+	{	background: #FFE8AF;
+		border: 1px solid #E2A359}
+
+.download
+{	font: 0.8em trebuchet ms, georgia, tahoma, sans-serif;
+	padding: 5px 0px;
+	border-top: 1px solid #DFE0C8;
+	margin: 10px 0}
+
+	.download a
+	{	display: block;
+		padding: 0 0 0 20px}
+
+a
+{	color: #639DEB}
+
+a:hover
+{	color: #09008E}
+
+a:visited
+{	color: #A8C0C7}
+
+a:visited:hover
+{	color: #09008E}
+
+a:active
+{	color: #E03083
+}
+
+
+/* The error box */
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+
+/********** message boxes css **************/
+.info,.notice, .success, .warning, .error, .validation {
+border: 1px solid;
+margin: 10px 0px;
+padding:15px 10px 15px 50px;
+background-repeat: no-repeat;
+font-size:14px;
+background-position: 10px center;
+}
+.notice {
+color: #00529B;
+background-image: url('notice.png');
+}
+.info {
+color: #00529B;
+background-image: url('info.png');
+}
+.success {
+color: #4F8A10;
+background-image:url('success.png');
+}
+.warning {
+color: #9F6000;
+background-image: url('warning.png');
+}
+.error {
+color: #D8000C;
+background-image: url('error.png');
+}
+
+/************8 login form *********************/
+#login-form input#username, #login-form input#password {
+width:250px;
+}
+
+
+#login-form table {
+border:2px solid #00529B;
+margin-left:auto;
+margin-right:auto;
+padding:1em;
+}
+
+
+#login-form table td {
+padding:6px;
+}
+
+.div-display {
+border-bottom:1px dotted  #A8C0C7;
+min-height:100px;
+position:relative;
+
+}
+div.div-display:hover {background-color:#fffdf5}

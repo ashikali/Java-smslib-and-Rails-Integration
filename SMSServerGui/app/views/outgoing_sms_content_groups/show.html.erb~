@@ -1,0 +1,17 @@
+<p>
+  <b>Group name:</b>
+  <%=h @outgoing_sms_content_group.group_name %>
+</p>
+
+<p>
+  <b>Sms content:</b>
+  <%=h @outgoing_sms_content_group.sms_content %>
+</p>
+<p>
+  <b>Created at:</b>
+  <%=h @outgoing_sms_content_group.created_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_outgoing_sms_content_group_path(@outgoing_sms_content_group) %> |
+<%= link_to 'Back', outgoing_sms_content_groups_path %>

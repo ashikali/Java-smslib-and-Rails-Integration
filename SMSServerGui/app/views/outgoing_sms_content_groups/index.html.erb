@@ -1,0 +1,31 @@
+<h1>Listing SMS Message Templates</h1> 
+<hr>
+<%@outgoing_sms_content_groups.each do |outgoing_sms_content_group|%>
+  <div id="<%=outgoing_sms_content_group.id %>" class='div-display'>
+<p>
+  <b>Group name:</b>
+  <%=h outgoing_sms_content_group.group_name %>
+</p>
+
+<p>
+  <b>Phone contents:</b>
+  <%=h outgoing_sms_content_group.sms_content %>
+</p>
+<p>
+  <b>Created At:</b>
+   <%= outgoing_sms_content_group.created_at %>
+</p>
+<p>
+<%= link_to 'Edit', edit_outgoing_sms_content_group_path( outgoing_sms_content_group ) %> <%= link_to 'Destroy', outgoing_sms_content_group, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+  </div>
+<% end %>
+<br />
+<div class="digg_pagination">
+  <center><%= will_paginate @outgoing_sms_content_groups, :container => false %></center>
+</div>
+<br />
+<%= link_to 'New Outgoing SMS Content  Group', new_outgoing_sms_content_group_path %>
+<br/>
+<h2>About This</h2>
+This page lists all the Message Templates which are created by you . Feature of this option is you can store the particular mssage as a template. So you can select those template while sending sms .

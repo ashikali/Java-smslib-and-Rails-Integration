@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>SMSServerGui-2.0</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+        <%= stylesheet_link_tag 'default' %>
+<%= javascript_include_tag 'prototype'%>
+
+</head>
+<body>
+
+      <body>
+
+<div id="all">
+	<!-- top -->
+	<div id="top">
+          <%= image_tag 'header.jpg', :size => "750x84" %>
+	</div>
+<div style="clear:both"></div>
+<div id="center" >
+  <%= display_messages %>
+  <%= yield %>
+  <br>
+</div>
+
+<div style="clear:both"></div>
+
+<div id="bottom">&copy; For feedbacks reach me on ashikali.m@gmail.com</div>
+<div style="clear:both"></div>
+</div>
+
+</body>
+</html>

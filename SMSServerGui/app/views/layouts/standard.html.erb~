@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title> SMSServerGui-2.0</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<%= calendar_date_select_includes "blue" %>
+</head>
+<body>
+
+      <body>
+
+<div id="all">
+	<!-- top -->
+	<div id="top">
+
+          <%= image_tag 'header.jpg', :size => "750x84" %>
+	</div>
+<div id=mytopmenu>
+<ul id="sddm">
+	<li><a href="#" onmouseover="mopen('m1')" onmouseout="mclosetime()">SMSGroups</a>
+		<div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                  <%=link_to( "Number  Groups",:controller => :outgoing_sms_number_groups )%>
+                  <%=link_to( "Message Templates",:controller => :outgoing_sms_content_groups )%>
+		</div>
+	</li>
+        <li><a href="#" onmouseover="mopen('m2')" onmouseout="mclosetime()">SMS</a>
+		<div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                  <%=link_to( "Send SMS",:controller => :welcome , :action => :send_sms  )%>
+                  <%=link_to( "Send SMS Queue",:controller => :welcome , :action => :send_sms_queue  )%>
+                  <%=link_to( "Unread SMS",:controller => :welcome , :action => :received_sms  )%>
+		</div>
+	</li>
+
+        <li><a href="#" onmouseover="mopen('m4')" onmouseout="mclosetime()">CallDetails</a>
+		<div id="m4" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                  <%=link_to( "Missed Call",:controller => :welcome , :action => :missed_calls  )%>
+		</div>
+	</li>
+
+	<li><a href="#" onmouseover="mopen('m3')" onmouseout="mclosetime()">Users</a>
+		<div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                  <%=link_to( "User Management",:controller => :users )%>
+		</div>
+	</li>
+	<li><a href="#" onmouseover="mopen('m7')" onmouseout="mclosetime()">Report</a>
+		<div id="m7" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                  <%=link_to( "Outgoing SMS" , :controller => :Report , :action => :outgoing_sms )%>
+                  <%=link_to( "Incoming SMS" , :controller => :Report , :action => :incoming_sms )%>
+                  <%=link_to( "Missed Calls" , :controller => :Report , :action => :missed_call )%>
+                  <%=link_to( "Clear SMS Queue",:controller => :welcome , :action => :clear_sms_queue  )%>
+		</div>
+	</li>
+	<li><a href="/login/logout" onmouseover="mopen('m6')" onmouseout="mclosetime()">Logout</a></li>
+	
+	
+</ul>
+<center><div class=ajaxload id='ajaxload' style="display: none; float: right;">
+  <%=image_tag( 'loader.gif' )%>
+</div></center>
+</div>
+
+<div style="clear:both"></div>
+<div id="center">
+  <%= display_messages %>
+  <%= yield %>
+<br>
+<br>
+</div>
+<div style="clear:both"></div>
+
+<div id="bottom">&copy; Developed and maintained by ashikali.m@gmail.com</div>
+<div style="clear:both"></div>
+</div>
+</body>
+</html>
