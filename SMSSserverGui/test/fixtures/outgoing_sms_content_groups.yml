@@ -1,9 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  group_name: MyString
-  sms_content: MyText
-
-two:
-  group_name: MyString
-  sms_content: MyText
