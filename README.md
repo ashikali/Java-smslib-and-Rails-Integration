@@ -406,6 +406,8 @@ Create SMSServer and SMSServerGui Tables :
 ----------------------------------------
 
 	SMSServerGui Database Configurations :
+		
+               
 
 	        --> Go to /var/www/SMSServerGui/db
 	        --> configure database in database.yml 
@@ -465,8 +467,10 @@ Create SMSServer and SMSServerGui Tables :
 			
 			mysql> 
 			
-			
 	   Now all the tables have been created in smslib database . Cross check the same .
+
+	Note: 
+		I must have to use migration instead of running raw smslib.sql file. But migration not doing its job well.
 	
 	
 Running SMSserver :

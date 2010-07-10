@@ -14,11 +14,11 @@ class WelcomeController < ApplicationController
 
 
       if numbers.empty?
-             @sms_out_obj.errors.add( :Recipient," : Recipient field has Invalid Numbers . Please check..."  )
+             @sms_out_obj.errors.add( :Recipient," : Recipient field has Invalid Numbers. Please check..."  )
              error_flag = 1
       end
-      if text.eql?( '' ) or text =~ /^\s$/ 
-             @sms_out_obj.errors.add( :Content, " : Message content has some invalid characters .Please check..."      )
+      if text.empty? 
+             @sms_out_obj.errors.add( :Content, " : Message content should not be empty. Please check..."      )
              error_flag = 1
       end
 
@@ -41,7 +41,7 @@ class WelcomeController < ApplicationController
               #pass sms parameters here 
              else
                error_flag = 1
-               @sms_out_obj.errors.add( :Recipient, " : #{number} seem to be a invalid number . Please check"  )
+               @sms_out_obj.errors.add( :Recipient, " : #{number} seem to be a invalid number.  Please check"  )
                break
              end
            }
@@ -57,6 +57,10 @@ class WelcomeController < ApplicationController
 
   def clear_sms_queue
       SmsserverOutMessage.delete_all
+      begin 
+      SmsserverOutMessage.find_by_sql( "alter table smsserver_out_messages  auto_increment=0;" )
+      rescue NoMethodError
+      end
       session[ :notice ] = "sms queue has been cleared successfully"
       redirect_to :action => :send_sms_queue 
   end
